@@ -7,6 +7,8 @@ public class PushButton : MonoBehaviour {
     [SerializeField]
     Button button;
 
+    private EnemyHand txt;
+
     // Use this for initialization
     void Start()
     {
@@ -22,5 +24,8 @@ public class PushButton : MonoBehaviour {
     void ShowLog()
     {
         Debug.Log(button.name);
+
+        txt = GetComponent<EnemyHand>();
+        txt.PushButton();
     }
 }
