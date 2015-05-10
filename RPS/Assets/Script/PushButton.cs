@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+/// <summary>
+/// ボタンが押された時のスクリプト
+/// </summary>
 public class PushButton : MonoBehaviour {
 
     [SerializeField]
     Button button;
 
     private EnemyHand txt;
+    private Umpire umpire;
 
     // Use this for initialization
     void Start()
@@ -20,11 +23,15 @@ public class PushButton : MonoBehaviour {
     {
 
     }
-
+    /// <summary>
+    /// なんのボタンが押されたか
+    /// </summary>
     void ShowLog()
     {
-        Debug.Log(button.name);
 
+        umpire = GetComponent<Umpire>();
+        umpire.PlayerHand(int.Parse(button.name));
+        umpire.Judgment();
         txt = GetComponent<EnemyHand>();
         txt.PushButton();
     }
