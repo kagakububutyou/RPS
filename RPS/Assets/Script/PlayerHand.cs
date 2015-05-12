@@ -15,6 +15,8 @@ public class PlayerHand : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		umpire = GetComponent<Umpire>();
+		txt = GetComponent<EnemyHand>();
         button.onClick.AddListener(ShowLog);
     }
 
@@ -29,10 +31,9 @@ public class PlayerHand : MonoBehaviour {
     void ShowLog()
     {
 
-        umpire = GetComponent<Umpire>();
+        
         umpire.PlayerHand(int.Parse(button.name));
         umpire.Judgment();
-        txt = GetComponent<EnemyHand>();
         txt.PushButton();
     }
 }
