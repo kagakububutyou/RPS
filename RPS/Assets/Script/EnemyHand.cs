@@ -43,7 +43,7 @@ public class EnemyHand : MonoBehaviour {
 		var allData = Enum.GetValues (typeof(Hand));
 
         Hands = UnityEngine.Random.Range(0, 300);
-        //umpire.EnemyHand(Hands % Hand.Length);
+        umpire.EnemyHand(Hands % allData.Length);
 		var data = allData.GetValue (Hands % allData.Length);
 		txt.text = data.ToString();
 
