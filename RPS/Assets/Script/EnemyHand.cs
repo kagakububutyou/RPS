@@ -9,7 +9,7 @@ using System.Linq;
 public class EnemyHand : MonoBehaviour {
 
     [SerializeField]
-    Text txt;
+    Text EnemyHands;
     private Umpire umpire;
     //string[] Hand = { "　 グー", "　 パー", "　 チョキ" };
 	enum Hand
@@ -45,7 +45,7 @@ public class EnemyHand : MonoBehaviour {
         Hands = UnityEngine.Random.Range(0, 300);
         umpire.EnemyHand(Hands % allData.Length);
 		var data = allData.GetValue (Hands % allData.Length);
-		txt.text = data.ToString();
+        EnemyHands.text = data.ToString();
 
     }
 }

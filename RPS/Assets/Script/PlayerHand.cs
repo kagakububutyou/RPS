@@ -31,7 +31,6 @@ public class PlayerHand : MonoBehaviour {
     void ShowLog()
     {
 
-        
         umpire.PlayerHand(int.Parse(button.name));
         umpire.Judgment();
         txt.PushButton();
