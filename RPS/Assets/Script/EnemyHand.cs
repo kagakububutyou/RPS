@@ -9,32 +9,29 @@ using System.Linq;
 public class EnemyHand : MonoBehaviour {
 
     [SerializeField]
-    Text EnemyHands;
+    private Text EnemyHands = null;         //  テキスト表示
 	[SerializeField]
-	int RandomMax = 0;
-    private Umpire umpire;
-    //string[] Hand = { "　 グー", "　 パー", "　 チョキ" };
-	enum Hand
+    private int RandomMax = 0;              //  ランダムの最大値を決める
+    private DateTime dtNow = DateTime.Now;  //  ランダムのシード値に使う用。時間の取得
+    private Umpire umpire;                  //  審判
+    //  じゃんけんの手
+	private enum Hand
 	{
 		グー,
 		パー,
 		チョキ,
 	};
 
-    private int Hands = -1;
+    private int Hands = -1;                 //  出す予定の値を一時保管
 
-    // Use this for initialization
-    void Start()
+    /// <summary>
+    /// 初期化のためにこれを使用してください
+    /// </summary>
+    private void Start()
     {
-		umpire = GetComponent<Umpire>();
-
-        PushButton();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
+        umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
+        PushButton();                                   //  初めに相手が何を出すかを決める
     }
 
     /// <summary>
@@ -42,12 +39,13 @@ public class EnemyHand : MonoBehaviour {
     /// </summary>
     public void PushButton()
     {
-		var allData = Enum.GetValues (typeof(Hand));
-
-		Hands = UnityEngine.Random.Range(0, RandomMax * allData.Length);
-        umpire.EnemyHand(Hands % allData.Length);
-		var data = allData.GetValue (Hands % allData.Length);
-        EnemyHands.text = data.ToString();
+		var allData = Enum.GetValues (typeof(Hand));                        //  Handの中の定数の値を取得
+		Hands = UnityEngine.Random.Range(0, RandomMax * allData.Length);    //  Handの数を取得しランダムの最大値をかける
+                                                                            //  意味があるのかわからないので要検証
+        umpire.GetEnemyHand(Hands % allData.Length);                        //  審判に何を出したかを教えてあげる
+                                                                            //  上のお陰でHandの数で除算するはめに
+		var data = allData.GetValue (Hands % allData.Length);               //  何を出したかを代入
+        EnemyHands.text = data.ToString();                                  //  出したてを表示する
 
     }
 }

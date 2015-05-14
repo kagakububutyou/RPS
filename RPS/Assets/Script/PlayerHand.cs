@@ -7,35 +7,31 @@ using UnityEngine.UI;
 public class PlayerHand : MonoBehaviour {
 
     [SerializeField]
-    Button button;		//	 
+    private Button button = null;	              	//  ボタンの取得
+	private EnemyHand enemyHand;                    //  敵の手
+    private Umpire umpire;                          //  審判
+	private ConditioSelection conditioSelection;    //  条件選択
 
-	private EnemyHand enemyHand;
-    private Umpire umpire;
-	private ConditioSelection conditioSelection;
-
-    // Use this for initialization
-    void Start()
+    /// <summary>
+    /// 初期化のためにこれを使用してください
+    /// </summary>
+    private void Start()
     {
-		umpire = GetComponent<Umpire>();
-		enemyHand = GetComponent<EnemyHand>();
-		conditioSelection = GetComponent<ConditioSelection>();
-        button.onClick.AddListener(ShowLog);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+		umpire = GetComponent<Umpire>();                        //  審判のコンポーネントの取得
+		enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
+		conditioSelection = GetComponent<ConditioSelection>();  //  条件のコンポーネントの取得
+        button.onClick.AddListener(Main);                    //  ボタンが押された時(イベントコールバック)
     }
     /// <summary>
     /// なんのボタンが押されたか
+    /// 基本的にボタンが押された時に
+    /// 処理をする
     /// </summary>
-    void ShowLog()
+    private void Main()
     {
-
-        umpire.PlayerHand(int.Parse(button.name));
-		umpire.Judgment();
-		enemyHand.PushButton();
-		conditioSelection.DrawConditio ();
+        umpire.GetPlayerHand(int.Parse(button.name));   //  審判に何を出したかを教える
+		umpire.Judgment();                              //  勝敗判定
+		enemyHand.PushButton();                         //  敵の次に出す手を選択
+		conditioSelection.Main ();                      //  条件の表示
     }
 }
