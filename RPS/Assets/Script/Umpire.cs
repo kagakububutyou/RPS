@@ -3,11 +3,12 @@ using System.Collections;
 /// <summary>
 /// 勝ち負けを決めるスクリプト
 /// </summary>
-public class Umpire : MonoBehaviour {
+public class Umpire : MonoBehaviour
+{
 
     private int PlayerHands = 0;    //  プレイヤーの何を出したかを受け取る
-    private int EnemyHands  = 0;    //  敵が何を出したかを受け取る
-	private int Conditios   = 0;    //  勝敗条件を受け取る
+    private int EnemyHands = 0;    //  敵が何を出したかを受け取る
+    private int Conditios = 0;    //  勝敗条件を受け取る
 
     /// <summary>
     /// プレイヤーが何を出したかをもらう
@@ -31,11 +32,11 @@ public class Umpire : MonoBehaviour {
     /// 勝敗条件をもらう
     /// </summary>
     /// <param name="Conditios">勝敗条件をもらう</param>
-	public void GetConditio(int Conditios)
-	{
-		this.Conditios = Conditios;                 //  条件を受け取る
-        Debug.Log("勝敗条件" + this.Conditios);     //  デバック表示
-	}
+    public void GetConditio(int Conditios)
+    {
+        this.Conditios = Conditios;                 //  条件を受け取る
+        Debug.Log("勝敗条件" + Conditios);          //  デバック表示
+    }
     /// <summary>
     /// じゃんけんの勝敗判定
     /// </summary>
@@ -73,14 +74,14 @@ public class Umpire : MonoBehaviour {
             Debug.Log("あいこ");
         }
         //  2を加算後３で剰余、敵と値が同じ
-        else if ((PlayerHands + 2) % 3 == EnemyHands) 
+        else if ((PlayerHands + 2) % 3 == EnemyHands)
         {
-			Debug.Log("勝利");
+            Debug.Log("勝利");
         }
         //  1を加算後3で剰余、敵と値が同じ
         else if ((PlayerHands + 1) % 3 == EnemyHands)
         {
-			Debug.Log("敗北");
+            Debug.Log("敗北");
         }
     }
 

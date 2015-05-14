@@ -64,6 +64,7 @@
     <Compile Include="Assets\Script\EnemyHand.cs" />
     <Compile Include="Assets\Script\PlayerHand.cs" />
     <Compile Include="Assets\Script\Umpire.cs" />
+    <Compile Include="Assets\Script\hoge.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
