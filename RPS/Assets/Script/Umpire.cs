@@ -7,6 +7,7 @@ public class Umpire : MonoBehaviour {
 
     private int PlayerHands = 0;
     private int EnemyHands = 0;
+	private int Conditios = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -31,6 +32,10 @@ public class Umpire : MonoBehaviour {
         EnemyHands = Hands;
         Debug.Log("相手" + EnemyHands);
     }
+	public void GetConditio(int Conditios)
+	{
+		Conditios = this.Conditios;
+	}
 
     public void Judgment()
     {
@@ -40,11 +45,11 @@ public class Umpire : MonoBehaviour {
         }
         else if ((PlayerHands + 2) % 3 == EnemyHands) 
         {
-            Debug.Log("勝");
+			Debug.Log("勝利");
         }
         else if ((PlayerHands + 1) % 3 == EnemyHands)
         {
-            Debug.Log("負");
+			Debug.Log("敗北");
         }
     }
 

@@ -7,16 +7,18 @@ using UnityEngine.UI;
 public class PlayerHand : MonoBehaviour {
 
     [SerializeField]
-    Button button;
+    Button button;		//	 
 
-    private EnemyHand txt;
+	private EnemyHand enemyHand;
     private Umpire umpire;
+	private ConditioSelection conditioSelection;
 
     // Use this for initialization
     void Start()
     {
 		umpire = GetComponent<Umpire>();
-		txt = GetComponent<EnemyHand>();
+		enemyHand = GetComponent<EnemyHand>();
+		conditioSelection = GetComponent<ConditioSelection>();
         button.onClick.AddListener(ShowLog);
     }
 
@@ -32,7 +34,8 @@ public class PlayerHand : MonoBehaviour {
     {
 
         umpire.PlayerHand(int.Parse(button.name));
-        umpire.Judgment();
-        txt.PushButton();
+		umpire.Judgment();
+		enemyHand.PushButton();
+		conditioSelection.DrawConditio ();
     }
 }

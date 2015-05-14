@@ -8,6 +8,10 @@ public class ConditioSelection : MonoBehaviour {
 
     [SerializeField]
     Text Condition;
+	[SerializeField]
+	int RandomMax = 0;
+
+	int ConditioSelections = -1;
 
     enum Conditions
     {
@@ -27,8 +31,13 @@ public class ConditioSelection : MonoBehaviour {
 	
 	}
 
-    void DrawConditio()
+    public void DrawConditio()
     {
-        Condition.text = Conditions.勝ってください.ToString();
+		var allData = Enum.GetValues (typeof(Conditions));
+		ConditioSelections = UnityEngine.Random.Range (0, RandomMax * allData.Length);
+		var data = allData.GetValue (ConditioSelections % allData.Length);
+
+		Condition.text = data.ToString();
+		Debug.Log (data.ToString ());
     }
 }

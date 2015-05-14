@@ -10,6 +10,8 @@ public class EnemyHand : MonoBehaviour {
 
     [SerializeField]
     Text EnemyHands;
+	[SerializeField]
+	int RandomMax = 0;
     private Umpire umpire;
     //string[] Hand = { "　 グー", "　 パー", "　 チョキ" };
 	enum Hand
@@ -42,7 +44,7 @@ public class EnemyHand : MonoBehaviour {
     {
 		var allData = Enum.GetValues (typeof(Hand));
 
-        Hands = UnityEngine.Random.Range(0, 300);
+		Hands = UnityEngine.Random.Range(0, RandomMax * allData.Length);
         umpire.EnemyHand(Hands % allData.Length);
 		var data = allData.GetValue (Hands % allData.Length);
         EnemyHands.text = data.ToString();
