@@ -10,9 +10,9 @@ public class EnemyHand : MonoBehaviour
 {
 
     [SerializeField]
-    private Text EnemyHands;         //  テキスト表示
+    private Text EnemyHands = null;         //  テキスト表示
     private DateTime dtNow = DateTime.Now;  //  ランダムのシード値に使う用。時間の取得
-    Umpire umpire;                  //  審判
+    private Umpire umpire = null;           //  審判
     //  じゃんけんの手
     private enum Hand
     {
@@ -38,10 +38,10 @@ public class EnemyHand : MonoBehaviour
     /// </summary>
     public void PushButton()
     {
-        var allData = Enum.GetValues(typeof(Hand));            //  Handの中の定数の値を取得
-        Hands = UnityEngine.Random.Range(0, allData.Length);     //  Handの数を取得
+        var allData = Enum.GetValues(typeof(Hand));             //  Handの中の定数の値を取得
+        Hands = UnityEngine.Random.Range(0, allData.Length);    //  Handの数を取得
         umpire.GetEnemyHand(Hands);                             //  審判に何を出したかを教えてあげる
-        var data = allData.GetValue(Hands);                    //  何を出したかを代入
+        var data = allData.GetValue(Hands);                     //  何を出したかを代入
         EnemyHands.text = data.ToString();                      //  出したてを表示する
 
     }

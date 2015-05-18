@@ -8,10 +8,10 @@ public class PlayerHand : MonoBehaviour
 {
 
     [SerializeField]
-    private Button button;	              	        //  ボタンの取得
-    private EnemyHand enemyHand;                    //  敵の手
-    private Umpire umpire;                          //  審判
-    private ConditioSelection conditioSelection;    //  条件選択
+    private Button button = null;	              	       //  ボタンの取得
+    private EnemyHand enemyHand = null;                    //  敵の手
+    private Umpire umpire = null;                          //  審判
+    private ConditioSelection conditioSelection = null;    //  条件選択
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -34,6 +34,6 @@ public class PlayerHand : MonoBehaviour
         umpire.GetPlayerHand(int.Parse(button.name));   //  審判に何を出したかを教える
         umpire.Judgment();                              //  勝敗判定
         enemyHand.PushButton();                         //  敵の次に出す手を選択
-        conditioSelection.DrawConditio();                      //  条件の表示
+        conditioSelection.DrawConditio();               //  条件の表示
     }
 }

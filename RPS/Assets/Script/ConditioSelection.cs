@@ -10,17 +10,16 @@ public class ConditioSelection : MonoBehaviour
 {
 
     [SerializeField]
-    private Text Condition;          //  条件を表示
+    private Text Condition = null;          //  条件を表示
     private DateTime dtNow = DateTime.Now;  //  ランダムのシード値に使う用。時間の取得
     private int ConditioSelections = -1;    //  条件を一時保管
-    Umpire umpire;                  //  審判
+    private Umpire umpire = null;           //  審判
 
-    //  勝敗条件
-    // アップデート予定
-    private enum Conditions
+    //[勝敗判定,不明,勝敗の渡す値]
+    private string[, ,] Conditions =
     {
-        勝ってください,
-        負けてください,
+        {{"勝ってください","2","-1"},},
+        {{"負けてください","1","-1"},},
     };
 
     /// <summary>
@@ -37,10 +36,9 @@ public class ConditioSelection : MonoBehaviour
     /// </summary>
     public void DrawConditio()
     {
-        var allData = Enum.GetValues(typeof(Conditions));                 //  Handの中の定数の値を取得
-        ConditioSelections = UnityEngine.Random.Range(0, allData.Length);  //  Handの数を取得
-        var data = allData.GetValue(ConditioSelections);                  //  何を出したかを代入
-        umpire.GetConditio(ConditioSelections);                           //  審判に条件を伝える
-        Condition.text = data.ToString();                                 //  出したてを表示する
+        ConditioSelections = UnityEngine.Random.Range(0,Conditions.Length /Conditions.Rank);    //  Handの数を取得
+        umpire.GetConditio(Int32.Parse(Conditions[ConditioSelections, 0, 1]));                  //  審判に条件を伝える
+        Condition.text = Conditions[ConditioSelections, 0, 0];                                  //  出したてを表示する
+        
     }
 }

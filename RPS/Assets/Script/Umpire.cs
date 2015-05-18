@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 /// <summary>
 /// 勝ち負けを決めるスクリプト
 /// </summary>
 public class Umpire : MonoBehaviour
 {
 
-    private int PlayerHands = 0;    //  プレイヤーの何を出したかを受け取る
-    private int EnemyHands = 0;    //  敵が何を出したかを受け取る
-    private int Conditios = 0;    //  勝敗条件を受け取る
+    private int GetPlayerHands = 0;     //  プレイヤーの何を出したかを受け取る
+    private int GetEnemyHands = 0;      //  敵が何を出したかを受け取る
+    private int GetConditios = 0;       //  勝敗条件を受け取る
+    [SerializeField]
+    private Text VictoryOrDefeat = null;
 
     /// <summary>
     /// プレイヤーが何を出したかをもらう
@@ -16,8 +19,8 @@ public class Umpire : MonoBehaviour
     /// <param name="Hands">何出したか？</param>
     public void GetPlayerHand(int Hands)
     {
-        PlayerHands = Hands;                //  情報を受け取る
-        Debug.Log("自分" + PlayerHands);    //　デバック表示
+        GetPlayerHands = Hands;                //  情報を受け取る
+        Debug.Log("自分" + GetPlayerHands);    //　デバック表示
     }
     /// <summary>
     /// 敵が何を出したかをもらう
@@ -25,8 +28,8 @@ public class Umpire : MonoBehaviour
     /// <param name="Hands">何を出したか？</param> 
     public void GetEnemyHand(int Hands)
     {
-        EnemyHands = Hands;                 //  何を出してるかを受け取る
-        Debug.Log("相手" + EnemyHands);     //  デバック表示
+        GetEnemyHands = Hands;                 //  何を出してるかを受け取る
+        Debug.Log("相手" + GetEnemyHands);     //  デバック表示
     }
     /// <summary>
     /// 勝敗条件をもらう
@@ -34,8 +37,8 @@ public class Umpire : MonoBehaviour
     /// <param name="Conditios">勝敗条件をもらう</param>
     public void GetConditio(int Conditios)
     {
-        this.Conditios = Conditios;                 //  条件を受け取る
-        Debug.Log("勝敗条件" + Conditios);          //  デバック表示
+        GetConditios = Conditios;                       //  条件を受け取る
+        Debug.Log("勝敗条件" + GetConditios);           //  デバック表示
     }
     /// <summary>
     /// じゃんけんの勝敗判定
@@ -60,29 +63,27 @@ public class Umpire : MonoBehaviour
     ///     ０－２     ０－１
     ///     １－０     １－２
     ///     ２－１     ２－０
-    ///     引き分けは同じ時、同じ値
+    ///     引き分けの場合
+    ///     同じ値
     ///     勝利の場合
     ///     自分に2を加算後3で剰余した値が敵が同じ時
     ///     敗北の場合
     ///     自分に1を加算後3で剰余した値が敵と同じ時
-    ///     ゆえに以下のようになる
+    ///     自分の値に条件を加算し0になれば正解
+
     public void Judgment()
     {
-        //  同じ値
-        if (PlayerHands == EnemyHands)
+        if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
         {
-            Debug.Log("あいこ");
+            VictoryOrDefeat.text = "正解";
+            Debug.Log("正解");
         }
-        //  2を加算後３で剰余、敵と値が同じ
-        else if ((PlayerHands + 2) % 3 == EnemyHands)
+        else
         {
-            Debug.Log("勝利");
+            VictoryOrDefeat.text = "不正解";
+            Debug.Log("不正解");
         }
-        //  1を加算後3で剰余、敵と値が同じ
-        else if ((PlayerHands + 1) % 3 == EnemyHands)
-        {
-            Debug.Log("敗北");
-        }
+
     }
 
 }
