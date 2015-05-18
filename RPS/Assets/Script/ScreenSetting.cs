@@ -11,14 +11,11 @@ public class ScreenSetting : MonoBehaviour {
     bool fullscreen = false;    //  フルスクリーンにするかどうか
 
 
-	// Use this for initialization
+    /// <summary>
+    /// 初期化のためにこれを使用してください
+    /// </summary>
 	void Start () 
     {
         Screen.SetResolution(width, height, fullscreen);	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

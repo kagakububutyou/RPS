@@ -8,10 +8,11 @@ public class PlayerHand : MonoBehaviour
 {
 
     [SerializeField]
-    private Button button = null;	              	       //  ボタンの取得
-    private EnemyHand enemyHand = null;                    //  敵の手
-    private Umpire umpire = null;                          //  審判
-    private ConditioSelection conditioSelection = null;    //  条件選択
+    private Button button = null;	              	        //  ボタンの取得
+    private EnemyHand enemyHand = null;                     //  敵の手
+    private Umpire umpire = null;                           //  審判
+    private ConditioSelection conditioSelection = null;     //  条件選択
+    private PositionChange position = null;                 //  場所の入れ替え
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -21,6 +22,7 @@ public class PlayerHand : MonoBehaviour
         enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
         conditioSelection = GetComponent<ConditioSelection>();  //  条件のコンポーネントの取得
         umpire = GetComponent<Umpire>();                        //  審判のコンポーネントの取得
+        position = GetComponent<PositionChange>();        //  入れ替えのコンポーネントの取得
         button.onClick.AddListener(ShowLog);                    //  ボタンが押された時(イベントコールバック)
     }
     /// <summary>
@@ -34,5 +36,7 @@ public class PlayerHand : MonoBehaviour
         umpire.Judgment();                              //  勝敗判定
         enemyHand.PushButton();                         //  敵の次に出す手を選択
         conditioSelection.DrawConditio();               //  条件の表示
+        position.Change();                              //  場所の入れ替え
+
     }
 }

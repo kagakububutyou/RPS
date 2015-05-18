@@ -14,6 +14,14 @@ public class Umpire : MonoBehaviour
     private Text VictoryOrDefeat = null;
 
     /// <summary>
+    /// 初期化のためにこれを使用してください
+    /// </summary>
+    void Start()
+    {
+        VictoryOrDefeat.text = "";
+    }
+
+    /// <summary>
     /// プレイヤーが何を出したかをもらう
     /// </summary>
     /// <param name="Hands">何出したか？</param>

@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\ConditioSelection.cs" />
     <Compile Include="Assets\Script\EnemyHand.cs" />
     <Compile Include="Assets\Script\PlayerHand.cs" />
+    <Compile Include="Assets\Script\PositionChange.cs" />
     <Compile Include="Assets\Script\ScreenSetting.cs" />
     <Compile Include="Assets\Script\Umpire.cs" />
   </ItemGroup>
