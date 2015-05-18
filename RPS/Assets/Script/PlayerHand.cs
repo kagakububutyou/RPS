@@ -18,7 +18,6 @@ public class PlayerHand : MonoBehaviour
     /// </summary>
     private void Start()
     {
-
         enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
         conditioSelection = GetComponent<ConditioSelection>();  //  条件のコンポーネントの取得
         umpire = GetComponent<Umpire>();                        //  審判のコンポーネントの取得
