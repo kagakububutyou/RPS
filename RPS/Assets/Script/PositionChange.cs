@@ -27,10 +27,10 @@ public class PositionChange : MonoBehaviour {
     {
         for (int i = 0; i < PlayerHand.Length; i++)
         {
-            int j = UnityEngine.Random.Range(0, PlayerHand.Length);
-            Vector2 temp = PlayerHand[i].transform.position;
-            PlayerHand[i].transform.position = PlayerHand[j].transform.position;
-            PlayerHand[j].transform.position = temp;
+            int j = UnityEngine.Random.Range(0, PlayerHand.Length);                 //  ランダムの幅を代入
+            Vector2 temp = PlayerHand[i].transform.position;                        //  一時保管
+            PlayerHand[i].transform.position = PlayerHand[j].transform.position;    //  適当なものを代入
+            PlayerHand[j].transform.position = temp;                                //  一時保管を代入し直す
         }
     }
 }

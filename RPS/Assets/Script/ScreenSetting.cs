@@ -12,7 +12,7 @@ public class ScreenSetting : MonoBehaviour {
 
 
     /// <summary>
-    /// 初期化のためにこれを使用してください
+    /// 解像度を固定
     /// </summary>
 	void Start () 
     {

@@ -22,7 +22,7 @@ public class PlayerHand : MonoBehaviour
         enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
         conditioSelection = GetComponent<ConditioSelection>();  //  条件のコンポーネントの取得
         umpire = GetComponent<Umpire>();                        //  審判のコンポーネントの取得
-        position = GetComponent<PositionChange>();        //  入れ替えのコンポーネントの取得
+        position = GetComponent<PositionChange>();              //  入れ替えのコンポーネントの取得
         button.onClick.AddListener(ShowLog);                    //  ボタンが押された時(イベントコールバック)
     }
     /// <summary>

@@ -18,7 +18,8 @@ public class Umpire : MonoBehaviour
     /// </summary>
     void Start()
     {
-        VictoryOrDefeat.text = "";
+
+        VictoryOrDefeat.text = "";      /// 中身を空にする
     }
 
     /// <summary>
