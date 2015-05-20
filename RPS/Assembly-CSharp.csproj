@@ -49,6 +49,8 @@
      <Compile Include="Assets\Script\ConditioSelection.cs" />
      <Compile Include="Assets\Script\CountDown.cs" />
      <Compile Include="Assets\Script\EnemyHand.cs" />
+     <Compile Include="Assets\Script\GameEnd.cs" />
+     <Compile Include="Assets\Script\GameStart.cs" />
      <Compile Include="Assets\Script\PlayerHand.cs" />
      <Compile Include="Assets\Script\PositionChange.cs" />
      <Compile Include="Assets\Script\ScreenSetting.cs" />
