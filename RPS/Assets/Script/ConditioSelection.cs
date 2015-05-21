@@ -29,6 +29,13 @@ public class ConditioSelection : MonoBehaviour
     {
         UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
         umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
+        Condition.text = "";                            //  中身を空にする 
+    }
+    /// <summary>
+    /// カウントダウンがゼロになったら呼ぶ
+    /// </summary>
+    public void GameStart()
+    {
         DrawConditio();
     }
     /// <summary>

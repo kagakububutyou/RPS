@@ -7,18 +7,17 @@ using UnityEngine.UI;
 public class Umpire : MonoBehaviour
 {
 
-    private int GetPlayerHands = 0;     //  プレイヤーの何を出したかを受け取る
-    private int GetEnemyHands = 0;      //  敵が何を出したかを受け取る
-    private int GetConditios = 0;       //  勝敗条件を受け取る
+    private int GetPlayerHands = 0;         //  プレイヤーの何を出したかを受け取る
+    private int GetEnemyHands = 0;          //  敵が何を出したかを受け取る
+    private int GetConditios = 0;           //  勝敗条件を受け取る
     [SerializeField]
-    private Text VictoryOrDefeat = null;
+    private Text VictoryOrDefeat = null;    //  正解不正解の表示
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     void Start()
     {
-
         VictoryOrDefeat.text = "";      /// 中身を空にする
     }
 

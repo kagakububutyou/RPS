@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+/// <summary>
+/// ボタンが押されたらゲーム終了
+/// </summary>
 public class GameEnd : MonoBehaviour {
 
     [SerializeField]

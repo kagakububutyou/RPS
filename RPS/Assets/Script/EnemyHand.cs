@@ -30,6 +30,13 @@ public class EnemyHand : MonoBehaviour
     {
         UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
         umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
+        EnemyHands.text = "";                           //  中身を空にする
+    }
+    /// <summary>
+    /// カウントダウンがゼロになったら呼ぶ
+    /// </summary>
+    public void GameStart()
+    {
         PushButton();                                   //  初めに相手が何を出すかを決める
     }
 
