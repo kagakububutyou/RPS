@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4270E1AD-4A63-A4C4-4220-5158BCEF0D89}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.1f1</UnityVersion>
@@ -58,10 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\ConditioSelection.cs" />
-    <Compile Include="Assets\Script\CountDown.cs" />
     <Compile Include="Assets\Script\EnemyHand.cs" />
     <Compile Include="Assets\Script\GameEnd.cs" />
-    <Compile Include="Assets\Script\GameStart.cs" />
+    <Compile Include="Assets\Script\GamePlayCount.cs" />
+    <Compile Include="Assets\Script\ScreenChange.cs" />
+    <Compile Include="Assets\Script\GameStartCountDown.cs" />
     <Compile Include="Assets\Script\PlayerHand.cs" />
     <Compile Include="Assets\Script\PositionChange.cs" />
     <Compile Include="Assets\Script\ScreenSetting.cs" />

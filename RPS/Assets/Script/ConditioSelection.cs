@@ -29,14 +29,15 @@ public class ConditioSelection : MonoBehaviour
     {
         UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
         umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
-        Condition.text = "";                            //  中身を空にする 
+        DrawConditio();                                 //  初めに条件を決める
+        Condition.enabled = false;                      //  とりあえず非表示
     }
     /// <summary>
     /// カウントダウンがゼロになったら呼ぶ
     /// </summary>
-    public void GameStart()
+    public void ChangeDrawMode(bool Mode)
     {
-        DrawConditio();
+        Condition.enabled = Mode;
     }
     /// <summary>
     /// 条件を表示

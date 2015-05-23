@@ -47,12 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\ConditioSelection.cs" />
-     <Compile Include="Assets\Script\CountDown.cs" />
      <Compile Include="Assets\Script\EnemyHand.cs" />
      <Compile Include="Assets\Script\GameEnd.cs" />
-     <Compile Include="Assets\Script\GameStart.cs" />
+     <Compile Include="Assets\Script\GamePlayCount.cs" />
+     <Compile Include="Assets\Script\GameStartCountDown.cs" />
      <Compile Include="Assets\Script\PlayerHand.cs" />
      <Compile Include="Assets\Script\PositionChange.cs" />
+     <Compile Include="Assets\Script\ScreenChange.cs" />
      <Compile Include="Assets\Script\ScreenSetting.cs" />
      <Compile Include="Assets\Script\Umpire.cs" />
  <Reference Include="UnityEngine.UI">

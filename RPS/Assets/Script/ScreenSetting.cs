@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// 解像度の固定
+/// </summary>
 public class ScreenSetting : MonoBehaviour {
 
     [SerializeField]
