@@ -64,7 +64,7 @@ public class GamePlayCount : MonoBehaviour {
         }
         if (timer <= 0.0f)                              //  0s以下で
         {
-            Application.LoadLevel(screen.name);         // シーン移動  
+			Application.LoadLevel("Result");         // Resetシーン移動  
         }
     }
 

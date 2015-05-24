@@ -10,16 +10,26 @@ public class Umpire : MonoBehaviour
     private int GetPlayerHands = 0;         //  プレイヤーの何を出したかを受け取る
     private int GetEnemyHands = 0;          //  敵が何を出したかを受け取る
     private int GetConditios = 0;           //  勝敗条件を受け取る
+	public static int ExactlyCount = 0;			//	 seikainokazu
+	public static int QuestionCount = 0;			//	monndainokazu
     [SerializeField]
     private Text VictoryOrDefeat = null;    //  正解不正解の表示
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
-    void Start()
+    private void Start()
     {
         VictoryOrDefeat.text = "";      /// 中身を空にする
     }
+	/// <summary>
+	/// reset
+	/// </summary>
+	public void Reset()
+	{
+		ExactlyCount = 0;
+		QuestionCount = 0;
+	}
 
     /// <summary>
     /// プレイヤーが何を出したかをもらう
@@ -84,11 +94,14 @@ public class Umpire : MonoBehaviour
         if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
         {
             VictoryOrDefeat.text = "正解";
+			ExactlyCount +=1;
+			QuestionCount += 1;
             Debug.Log("正解");
         }
         else
         {
             VictoryOrDefeat.text = "不正解";
+			QuestionCount += 1;
             Debug.Log("不正解");
         }
 
