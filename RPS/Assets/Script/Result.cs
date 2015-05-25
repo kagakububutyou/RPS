@@ -1,22 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Result : MonoBehaviour {
 
+	[SerializeField]
+	private Text result = null;
+
+	private int Exactly = 0;
+	private int Question = 0;
+
 	// Use this for initialization
-	void Start () 
+	private void Start () 
 	{
-		Debug.Log (Umpire.ExactlyCount);
-		Debug.Log (Umpire.QuestionCount);
+		Exactly = Umpire.ExactlyCount;
+		Question = Umpire.QuestionCount;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	private void Update () 
 	{
-
+		DarwResult ();
 	}
 
-
+	private void DarwResult()
+	{
+		result.text = "      " + Exactly.ToString() + "/" + Question.ToString() + "正解";
+	}
 
 
 }
