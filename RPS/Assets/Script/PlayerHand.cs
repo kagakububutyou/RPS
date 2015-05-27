@@ -23,14 +23,23 @@ public class PlayerHand : MonoBehaviour
         conditioSelection = GetComponent<ConditioSelection>();  //  条件のコンポーネントの取得
         umpire = GetComponent<Umpire>();                        //  審判のコンポーネントの取得
         position = GetComponent<PositionChange>();              //  入れ替えのコンポーネントの取得
-        button.onClick.AddListener(ShowLog);                    //  ボタンが押された時(イベントコールバック)
+        //button.enabled = false;                                 //  処理をしない
+        button.onClick.AddListener(PushHand);                   //  ボタンが押された時(イベントコールバック)
+    }
+    /// <summary>
+    /// ボタンを処理するか
+    /// </summary>
+    public void ChangeDrawMode(bool Mode)
+    {
+        button.enabled = Mode;
     }
     /// <summary>
     /// なんのボタンが押されたか
     /// 基本的にボタンが押された時に
     /// 処理をする
+    /// いずれ変更
     /// </summary>
-    private void ShowLog()
+    private void PushHand()
     {
         umpire.GetPlayerHand(int.Parse(button.name));   //  審判に何を出したかを教える
         umpire.Judgment();                              //  勝敗判定

@@ -8,8 +8,6 @@ public class ScreenChange : MonoBehaviour {
 
     [SerializeField]
     private Button button = null;	    //  ボタンの取得
-    [SerializeField]
-    private Object screen = null;       //  シーンの取得
 
     /// <summary>
     /// 初期化のためにこれを使用してください
