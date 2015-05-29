@@ -47,11 +47,11 @@ public class GameStartCountDown : MonoBehaviour {
         var temp = (int)timer;                          //  タイム表示のために小数点切り捨て
         if (timer >= 1.0f)                              //  1s以上なら
         {
-            timeCount.text = "  " + temp.ToString();    //  数字をまんま表示
+            timeCount.text = "   " + temp.ToString();   //  数字をまんま表示
         }
         else if (timer < 1.0f)                          //  1s未満で
         {
-            timeCount.text = "GO!";                     //  Goを表示
+			timeCount.text = "開始";                     //  Goを表示
         }
         if (timer <= 0.0f)                              //  0s以下で
         {
