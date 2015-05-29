@@ -16,9 +16,11 @@ public class EnemyHand : MonoBehaviour
     //  じゃんけんの手
     private enum Hand
     {
-        グー,
-        パー,
-        チョキ,
+        Rock,           //  グー
+        Paper,          //  パー
+        Sciccors,       //  チョキ
+
+        MaxValue,
     };
 
     private int Hands = -1;                 //  出す予定の値を一時保管
@@ -46,11 +48,9 @@ public class EnemyHand : MonoBehaviour
     /// </summary>
     public void PushButton()
     {
-        var allData = Enum.GetValues(typeof(Hand));             //  Handの中の定数の値を取得
-        Hands = UnityEngine.Random.Range(0, allData.Length);    //  Handの数を取得
-        umpire.GetEnemyHand(Hands);                             //  審判に何を出したかを教えてあげる
-        var data = allData.GetValue(Hands);                     //  何を出したかを代入
-        EnemyHands.text = data.ToString();                      //  出したてを表示する
+        var allData = (int)Hand.MaxValue;               //  Handの中の定数の値を取得
+        Hands = UnityEngine.Random.Range(0, allData);   //  Handの数を取得
+        umpire.GetEnemyHand(Hands);                     //  審判に何を出したかを教えてあげる
 
     }
 }
