@@ -13,6 +13,8 @@ public class ICharacterHand : MonoBehaviour {
         MaxValue,
     };
 
+    private HandType handType = HandType.MaxValue;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -22,4 +24,13 @@ public class ICharacterHand : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    /// <summary>
+    /// プレーヤーの手をもらってくる
+    /// </summary>
+    public void GetHand(HandType type)
+    {
+        handType = type;
+        Debug.Log(handType.ToString());
+    }
 }

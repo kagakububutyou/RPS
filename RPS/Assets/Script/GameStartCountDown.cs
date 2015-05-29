@@ -12,7 +12,7 @@ public class GameStartCountDown : MonoBehaviour {
     [SerializeField]
     private float startTime = 3.0f;                             //  カウントダウンの初期値
     private float timer = 0.0f;                                 //  カウントダウン用
-    private EnemyHand enemyHand = null;                         //  敵の手
+    //private EnemyHand enemyHand = null;                         //  敵の手
     private ConditioSelection conditioSelection = null;         //  条件選択
     private GamePlayCount gamePlayCount = null;                 //  ゲームプレイ中のカウントダウン
     //private PlayerHand playerHand = null;                       //  プレーヤーの手
@@ -24,7 +24,7 @@ public class GameStartCountDown : MonoBehaviour {
 	private void Start () 
     {
         conditioSelection = GetComponent<ConditioSelection>();  //  条件選択のコンポーネントの取得
-        enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
+        //enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
         gamePlayCount = GetComponent<GamePlayCount>();          //  ゲームプレイ中のカウントダウンのコンポーネントの取得
         //playerHand = GetComponent<PlayerHand>();                //  プレーヤーの手のコンポーネントの取得
         timer = startTime;                                      //  タイムセット
@@ -58,7 +58,7 @@ public class GameStartCountDown : MonoBehaviour {
         if (timer <= 0.0f)                              //  0s以下で
         {
             conditioSelection.ChangeDrawMode(true);     //  カウントダウンがゼロになったら呼ぶ
-            enemyHand.ChangeDrawMode(true);             //  カウントダウンがゼロになったら呼ぶ
+            //enemyHand.ChangeDrawMode(true);             //  カウントダウンがゼロになったら呼ぶ
             //playerHand.ChangeDrawMode(true);            //  カウントダウンがゼロになったら呼ぶ
             gamePlayCount.GameStart();                  //  カウントダウン開始
             timeCount.enabled = false;                  //  表示を消す

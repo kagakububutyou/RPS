@@ -1,56 +1,66 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using System;
-using System.Linq;
+using System.Collections.Generic;
 /// <summary>
 /// 相手の手を決めるスクリプト
 /// </summary>
-public class EnemyHand : MonoBehaviour
-{
+public class EnemyHand : IHand{
+
+    [System.Serializable]
+    public struct DATA
+    {
+        public DATA(ICharacterHand.HandType type, Sprite sprite)
+        {
+            this.type = type;
+            this.sprite = sprite;
+ 
+        }
+        public ICharacterHand.HandType type;
+        public Sprite sprite;
+    }
+
 
     [SerializeField]
-    private Text EnemyHands = null;         //  テキスト表示
-    private DateTime dtNow = DateTime.Now;  //  ランダムのシード値に使う用。時間の取得
-    private Umpire umpire = null;           //  審判
-    //  じゃんけんの手
-    private enum Hand
-    {
-        Rock,           //  グー
-        Paper,          //  パー
-        Sciccors,       //  チョキ
+    List<DATA> data = new List<DATA>();
 
-        MaxValue,
-    };
-
-    private int Hands = -1;                 //  出す予定の値を一時保管
+    Image image = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     private void Start()
     {
-        UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
-        umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
-        PushButton();                                   //  出す手を決める
-        EnemyHands.enabled = false;                     //  中身を空にする
+        image = GetComponent<Image>();
+        PushHand();
     }
     /// <summary>
     /// カウントダウンがゼロになったら呼ぶ
     /// </summary>
     public void ChangeDrawMode(bool Mode)
     {
-        EnemyHands.enabled = Mode;
+
+    }
+    
+    private void RandomHand()
+    {
+        handType = (ICharacterHand.HandType)Random.Range(0, (int)ICharacterHand.HandType.MaxValue);
+        foreach (var d in data)
+	    {
+            if (d.type == handType)
+            {
+		        image.sprite = d.sprite;
+                break;
+            }
+	    }
     }
 
     /// <summary>
     /// 何を出すか決めるところ
     /// </summary>
-    public void PushButton()
+    protected override void PushHand()
     {
-        var allData = (int)Hand.MaxValue;               //  Handの中の定数の値を取得
-        Hands = UnityEngine.Random.Range(0, allData);   //  Handの数を取得
-        umpire.GetEnemyHand(Hands);                     //  審判に何を出したかを教えてあげる
-
+        RandomHand();
+        manager.GetHand(handType);
     }
 }

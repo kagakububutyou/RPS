@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -63,11 +60,13 @@
     <Compile Include="Assets\Script\ConditioSelection.cs" />
     <Compile Include="Assets\Script\CountDown.cs" />
     <Compile Include="Assets\Script\EnemyHand.cs" />
+    <Compile Include="Assets\Script\EnemyManager.cs" />
     <Compile Include="Assets\Script\GameEnd.cs" />
     <Compile Include="Assets\Script\GamePlayCount.cs" />
     <Compile Include="Assets\Script\GameStart.cs" />
     <Compile Include="Assets\Script\GameStartCountDown.cs" />
     <Compile Include="Assets\Script\ICharacterHand.cs" />
+    <Compile Include="Assets\Script\IHand.cs" />
     <Compile Include="Assets\Script\PlayerHand.cs" />
     <Compile Include="Assets\Script\PlayerManager.cs" />
     <Compile Include="Assets\Script\PositionChange.cs" />
