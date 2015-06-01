@@ -59,7 +59,7 @@ public class GamePlayCount : MonoBehaviour {
         else if (timer < 1.0f)                          //  1s未満で
         {
 			timeCount.text = "終了";                     //  Goを表示
-            conditioSelection.ChangeDrawMode(false);    //  非表示に
+            conditioSelection.EndGame();    //  非表示に
             enemyHand.ChangeDrawMode(false);            //  非表示に
             playerHand.ChangeDrawMode(false);            //  カウントダウンがゼロになったら呼ぶ
         }

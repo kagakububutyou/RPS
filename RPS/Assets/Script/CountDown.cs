@@ -52,7 +52,7 @@ public class CountDown : MonoBehaviour {
         }
         if (timer <= 0.0f)                              //  0s以下で
         {
-            conditioSelection.ChangeDrawMode(true);              //  カウントダウンがゼロになったら呼ぶ
+            //conditioSelection.StartGame();              //  カウントダウンがゼロになったら呼ぶ
 			enemyHand.ChangeDrawMode(true);                      //  カウントダウンがゼロになったら呼ぶ
             timeCount.enabled = false;                  //  表示を消す
         }

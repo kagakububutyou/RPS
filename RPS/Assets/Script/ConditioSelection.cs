@@ -29,20 +29,26 @@ public class ConditioSelection : MonoBehaviour
     {
         UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒 (Millisecond) を取得しシード値へ
         umpire = GetComponent<Umpire>();                //  審判のコンポーネントの取得
-        DrawConditio();                                 //  初めに条件を決める
         Condition.enabled = false;                      //  とりあえず非表示
     }
-    /// <summary>
-    /// カウントダウンがゼロになったら呼ぶ
-    /// </summary>
-    public void ChangeDrawMode(bool Mode)
-    {
-        Condition.enabled = Mode;
-    }
+	public void StartGame()
+	{
+		Condition.enabled = true;
+		Conditio ();
+	}
+	public void NextGame()
+	{
+		Conditio ();
+	}
+	public void EndGame()
+	{
+		Condition.enabled = false;
+	}
+
     /// <summary>
     /// 条件を表示
     /// </summary>
-    public void DrawConditio()
+    private void Conditio()
     {
         ConditioSelections = UnityEngine.Random.Range(0,Conditions.Length /Conditions.Rank);    //  Handの数を取得
         umpire.GetConditio(Int32.Parse(Conditions[ConditioSelections, 0, 1]));                  //  審判に条件を伝える
