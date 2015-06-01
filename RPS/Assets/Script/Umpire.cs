@@ -15,11 +15,14 @@ public class Umpire : MonoBehaviour
     [SerializeField]
     private Text VictoryOrDefeat = null;    //  正解不正解の表示
 
+	private EnemyManager enemyManager = null;
+
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     private void Start()
     {
+		enemyManager = GameObject.Find ("EnemyManager").GetComponent<EnemyManager> ();
         VictoryOrDefeat.text = "";      /// 中身を空にする
     }
 	/// <summary>
@@ -91,6 +94,8 @@ public class Umpire : MonoBehaviour
 
     public void Judgment()
     {
+
+		enemyManager.GetPushHandTaimingu ();
         if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
         {
             VictoryOrDefeat.text = "正解";

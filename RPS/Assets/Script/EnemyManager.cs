@@ -3,13 +3,15 @@ using System.Collections;
 
 public class EnemyManager : ICharacterHand{
 
-    /// <summary>
-    /// 初期化のためにこれを使用してください
-    /// </summary>
-    private void Start()
-    {
-
-    }
+	private Umpire umpire = null;
+	
+	/// <summary>
+	/// 初期化のためにこれを使用してください
+	/// </summary>
+	private void Start () 
+	{
+		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
+	}
 
     /// <summary>
     /// 更新は、フレームごとに一度呼ばれています
@@ -18,6 +20,11 @@ public class EnemyManager : ICharacterHand{
     {
 
     }
+
+	public void GetPushHandTaimingu()
+	{
+		umpire.GetEnemyHand ((int)handType);
+	}
 
     
 }

@@ -3,12 +3,14 @@ using System.Collections;
 
 public class PlayerManager : ICharacterHand {
 
+	private Umpire umpire = null;
+
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
 	private void Start () 
     {
-	
+		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
 	}
 
     /// <summary>
@@ -16,6 +18,11 @@ public class PlayerManager : ICharacterHand {
     /// </summary>
 	private void Update () 
     {
-	
+
+	}
+
+	public void GetPushHandTaimingu()
+	{
+		umpire.GetPlayerHand ((int)handType);
 	}
 }

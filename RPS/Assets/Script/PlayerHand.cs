@@ -8,14 +8,21 @@ public class PlayerHand : IHand
 {
 
     private Button button = null;	              	        //  ボタンの取得
+	private PlayerManager playerManager = null;
+	private Umpire umpire = null;
+
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     private void Start()
     {
+		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
+		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
         button = GetComponent<Button>();                        //  ボタンの取得
         button.onClick.AddListener(PushHand);                   //  ボタンが押された時(イベントコールバック)
+		button.onClick.AddListener(playerManager.GetPushHandTaimingu);
+		button.onClick.AddListener (umpire.Judgment);
     }
 
     /// <summary>
@@ -25,5 +32,4 @@ public class PlayerHand : IHand
     {
         //button.enabled = Mode;
     }
-
 }
