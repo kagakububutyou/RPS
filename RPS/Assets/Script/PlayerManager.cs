@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerManager : ICharacterHand {
 
 	private Umpire umpire = null;
+	private PlayerAction playerAction = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -11,6 +12,7 @@ public class PlayerManager : ICharacterHand {
 	private void Start () 
     {
 		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
+		playerAction = GetComponent<PlayerAction> ();
 	}
 
     /// <summary>
@@ -19,6 +21,11 @@ public class PlayerManager : ICharacterHand {
 	private void Update () 
     {
 
+	}
+
+	public void NextGame()
+	{
+		playerAction.PositionChange ();
 	}
 
 	public void GetPushHandTaimingu()

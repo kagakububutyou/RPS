@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyManager : ICharacterHand{
 
 	private Umpire umpire = null;
+	private EnemyHand enemyHand = null;
 	
 	/// <summary>
 	/// 初期化のためにこれを使用してください
@@ -11,6 +12,7 @@ public class EnemyManager : ICharacterHand{
 	private void Start () 
 	{
 		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
+		enemyHand = GameObject.Find ("EnemyHand").GetComponent<EnemyHand> ();
 	}
 
     /// <summary>
@@ -26,5 +28,9 @@ public class EnemyManager : ICharacterHand{
 		umpire.GetEnemyHand ((int)handType);
 	}
 
+	public void NextGame()
+	{
+		enemyHand.Reset ();
+	}
     
 }

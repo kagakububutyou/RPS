@@ -56,9 +56,9 @@
      <Compile Include="Assets\Script\GameStartCountDown.cs" />
      <Compile Include="Assets\Script\ICharacterHand.cs" />
      <Compile Include="Assets\Script\IHand.cs" />
+     <Compile Include="Assets\Script\PlayerAction.cs" />
      <Compile Include="Assets\Script\PlayerHand.cs" />
      <Compile Include="Assets\Script\PlayerManager.cs" />
-     <Compile Include="Assets\Script\PositionChange.cs" />
      <Compile Include="Assets\Script\Result.cs" />
      <Compile Include="Assets\Script\ScreenChange.cs" />
      <Compile Include="Assets\Script\ScreenSetting.cs" />

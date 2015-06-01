@@ -34,6 +34,20 @@ public class EnemyHand : IHand{
         image = GetComponent<Image>();
         PushHand();
     }
+
+	public void Reset()
+	{
+		PushHand ();
+	}
+
+	/// <summary>
+	/// 何を出すか決めるところ
+	/// </summary>
+	protected override void PushHand()
+	{
+		RandomHand();
+		manager.GetHand(handType);
+	}
     /// <summary>
     /// カウントダウンがゼロになったら呼ぶ
     /// </summary>
@@ -55,12 +69,5 @@ public class EnemyHand : IHand{
 	    }
     }
 
-    /// <summary>
-    /// 何を出すか決めるところ
-    /// </summary>
-    protected override void PushHand()
-    {
-        RandomHand();
-        manager.GetHand(handType);
-    }
+    
 }

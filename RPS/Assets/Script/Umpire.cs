@@ -15,6 +15,7 @@ public class Umpire : MonoBehaviour
     [SerializeField]
     private Text VictoryOrDefeat = null;    //  正解不正解の表示
 
+	private PlayerManager playerManager = null;
 	private EnemyManager enemyManager = null;
 
     /// <summary>
@@ -22,6 +23,7 @@ public class Umpire : MonoBehaviour
     /// </summary>
     private void Start()
     {
+		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
 		enemyManager = GameObject.Find ("EnemyManager").GetComponent<EnemyManager> ();
         VictoryOrDefeat.text = "";      /// 中身を空にする
     }
@@ -61,55 +63,66 @@ public class Umpire : MonoBehaviour
         GetConditios = Conditios;                       //  条件を受け取る
         Debug.Log("勝敗条件" + GetConditios);           //  デバック表示
     }
-    /// <summary>
-    /// じゃんけんの勝敗判定
-    /// </summary>
-    /// 
-    /// ０はグー
-    /// １はパー
-    /// ２はチョキ
-    /// ○は勝利
-    /// △は引き分け(あいこ)
-    /// ×は敗北
-    /// とする
-    ///
-    ///         勝敗表
-    ///             て き
-    ///    　　｜０｜１｜２
-    ///  じ  ０｜△｜×｜○
-    ///  ぶ  １｜○｜△｜×
-    ///  ん  ２｜×｜○｜△
-    ///         勝敗パターン
-    ///     勝利       敗北
-    ///     ０－２     ０－１
-    ///     １－０     １－２
-    ///     ２－１     ２－０
-    ///     引き分けの場合
-    ///     同じ値
-    ///     勝利の場合
-    ///     自分に2を加算後3で剰余した値が敵が同じ時
-    ///     敗北の場合
-    ///     自分に1を加算後3で剰余した値が敵と同じ時
-    ///     自分の値に条件を加算し0になれば正解
 
     public void Judgment()
     {
 
 		enemyManager.GetPushHandTaimingu ();
-        if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
-        {
-            VictoryOrDefeat.text = "正解";
-			ExactlyCount +=1;
-			QuestionCount += 1;
-            Debug.Log("正解");
-        }
-        else
-        {
-            VictoryOrDefeat.text = "不正解";
-			QuestionCount += 1;
-            Debug.Log("不正解");
-        }
-
+		Judge ();
+		NextGame ();
+       
     }
 
+	private void NextGame()
+	{
+		playerManager.NextGame ();
+		enemyManager.NextGame ();
+	}
+	/// <summary>
+	/// じゃんけんの勝敗判定
+	/// </summary>
+	/// 
+	/// ０はグー
+	/// １はパー
+	/// ２はチョキ
+	/// ○は勝利
+	/// △は引き分け(あいこ)
+	/// ×は敗北
+	/// とする
+	///
+	///         勝敗表
+	///             て き
+	///    　　｜０｜１｜２
+	///  じ  ０｜△｜×｜○
+	///  ぶ  １｜○｜△｜×
+	///  ん  ２｜×｜○｜△
+	///         勝敗パターン
+	///     勝利       敗北
+	///     ０－２     ０－１
+	///     １－０     １－２
+	///     ２－１     ２－０
+	///     引き分けの場合
+	///     同じ値
+	///     勝利の場合
+	///     自分に2を加算後3で剰余した値が敵が同じ時
+	///     敗北の場合
+	///     自分に1を加算後3で剰余した値が敵と同じ時
+	///     自分の値に条件を加算し0になれば正解
+	private void Judge()
+	{
+		if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
+		{
+			VictoryOrDefeat.text = "正解";
+			ExactlyCount +=1;
+			QuestionCount += 1;
+			Debug.Log("正解");
+		}
+		else
+		{
+			VictoryOrDefeat.text = "不正解";
+			QuestionCount += 1;
+			Debug.Log("不正解");
+		}
+
+	}
 }
