@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// 敵のマネージャー
+/// </summary>
 public class EnemyManager : ICharacterHand{
 
+    /// <summary>
+    /// 審判
+    /// </summary>
 	private Umpire umpire = null;
+    /// <summary>
+    /// 敵の手
+    /// </summary>
 	private EnemyHand enemyHand = null;
 	
 	/// <summary>
@@ -14,20 +22,16 @@ public class EnemyManager : ICharacterHand{
 		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
 		enemyHand = GameObject.Find ("EnemyHand").GetComponent<EnemyHand> ();
 	}
-
     /// <summary>
-    /// 更新は、フレームごとに一度呼ばれています
+    /// ボタンを押したタイミング
     /// </summary>
-    private void Update()
-    {
-
-    }
-
 	public void GetPushHandTaimingu()
 	{
 		umpire.GetEnemyHand ((int)handType);
 	}
-
+    /// <summary>
+    /// 次のゲームへ
+    /// </summary>
 	public void NextGame()
 	{
 		enemyHand.Reset ();

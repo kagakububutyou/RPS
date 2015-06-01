@@ -6,11 +6,18 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerHand : IHand
 {
-
-    private Button button = null;	              	        //  ボタンの取得
+    /// <summary>
+    /// ボタン
+    /// </summary>
+    private Button button = null;
+    /// <summary>
+    /// プレイヤーのマネージャー
+    /// </summary>
 	private PlayerManager playerManager = null;
+    /// <summary>
+    /// 審判
+    /// </summary>
 	private Umpire umpire = null;
-
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -19,17 +26,15 @@ public class PlayerHand : IHand
     {
 		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
 		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
-        button = GetComponent<Button>();                        //  ボタンの取得
+        button = GetComponent<Button>();
         button.onClick.AddListener(PushHand);                   //  ボタンが押された時(イベントコールバック)
-		button.onClick.AddListener(playerManager.GetPushHandTaimingu);
-		button.onClick.AddListener (umpire.Judgment);
     }
-
     /// <summary>
-    /// ボタンを処理するか
+    /// ボタンが押された時
     /// </summary>
-    public void ChangeDrawMode(bool Mode)
+    protected override void PushHand()
     {
-        //button.enabled = Mode;
+        playerManager.GetPushHandTaimingu();
+        umpire.Judgment();
     }
 }

@@ -6,17 +6,43 @@ using UnityEngine.UI;
 /// </summary>
 public class Umpire : MonoBehaviour
 {
-
-    private int GetPlayerHands = 0;         //  プレイヤーの何を出したかを受け取る
-    private int GetEnemyHands = 0;          //  敵が何を出したかを受け取る
-    private int GetConditios = 0;           //  勝敗条件を受け取る
-	public static int ExactlyCount = 0;			//	 seikainokazu
-	public static int QuestionCount = 0;			//	monndainokazu
+    /// <summary>
+    /// プレイヤーの手
+    /// </summary>
+    private int playerHands = 0;
+    /// <summary>
+    /// 敵の手
+    /// </summary>
+    private int enemyHands = 0;
+    /// <summary>
+    /// 勝敗条件
+    /// </summary>
+    private int conditios = 0;
+    /// <summary>
+    /// 正解数
+    /// </summary>
+	public static int exactlyCount = 0;
+    /// <summary>
+    /// 問題数
+    /// </summary>
+	public static int questionCount = 0;
+    /// <summary>
+    /// 正解不正解の表示
+    /// </summary>
     [SerializeField]
-    private Text VictoryOrDefeat = null;    //  正解不正解の表示
-
+    private Text victoryOrDefeat = null;
+    /// <summary>
+    /// プレイヤーマネージャー
+    /// </summary>
 	private PlayerManager playerManager = null;
+    /// <summary>
+    /// 敵のマネージャー
+    /// </summary>
 	private EnemyManager enemyManager = null;
+    /// <summary>
+    /// 勝敗条件
+    /// </summary>
+    private ConditioSelection conditioSelection = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -25,25 +51,17 @@ public class Umpire : MonoBehaviour
     {
 		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
 		enemyManager = GameObject.Find ("EnemyManager").GetComponent<EnemyManager> ();
-        VictoryOrDefeat.text = "";      /// 中身を空にする
+        conditioSelection = GetComponent<ConditioSelection>();      //  勝敗条件
+        victoryOrDefeat.text = "";      /// 中身を空にする
     }
-	/// <summary>
-	/// reset
-	/// </summary>
-	public void Reset()
-	{
-		ExactlyCount = 0;
-		QuestionCount = 0;
-	}
-
     /// <summary>
     /// プレイヤーが何を出したかをもらう
     /// </summary>
     /// <param name="Hands">何出したか？</param>
     public void GetPlayerHand(int Hands)
     {
-        GetPlayerHands = Hands;                //  情報を受け取る
-        Debug.Log("自分" + GetPlayerHands);    //　デバック表示
+        playerHands = Hands;                //  情報を受け取る
+        Debug.Log("自分" + playerHands);    //　デバック表示
     }
     /// <summary>
     /// 敵が何を出したかをもらう
@@ -51,8 +69,8 @@ public class Umpire : MonoBehaviour
     /// <param name="Hands">何を出したか？</param> 
     public void GetEnemyHand(int Hands)
     {
-        GetEnemyHands = Hands;                 //  何を出してるかを受け取る
-        Debug.Log("相手" + GetEnemyHands);     //  デバック表示
+        enemyHands = Hands;                 //  何を出してるかを受け取る
+        Debug.Log("相手" + enemyHands);     //  デバック表示
     }
     /// <summary>
     /// 勝敗条件をもらう
@@ -60,23 +78,27 @@ public class Umpire : MonoBehaviour
     /// <param name="Conditios">勝敗条件をもらう</param>
     public void GetConditio(int Conditios)
     {
-        GetConditios = Conditios;                       //  条件を受け取る
-        Debug.Log("勝敗条件" + GetConditios);           //  デバック表示
+        conditios = Conditios;                       //  条件を受け取る
+        Debug.Log("勝敗条件" + conditios);           //  デバック表示
     }
 
+    /// <summary>
+    /// 審判
+    /// </summary>
     public void Judgment()
     {
-
 		enemyManager.GetPushHandTaimingu ();
 		Judge ();
 		NextGame ();
-       
     }
-
+    /// <summary>
+    /// 次のゲームへ
+    /// </summary>
 	private void NextGame()
 	{
 		playerManager.NextGame ();
 		enemyManager.NextGame ();
+        conditioSelection.NextGame();
 	}
 	/// <summary>
 	/// じゃんけんの勝敗判定
@@ -110,17 +132,17 @@ public class Umpire : MonoBehaviour
 	///     自分の値に条件を加算し0になれば正解
 	private void Judge()
 	{
-		if ((GetPlayerHands + GetConditios) % 3 - GetEnemyHands == 0) 
+		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
-			VictoryOrDefeat.text = "正解";
-			ExactlyCount +=1;
-			QuestionCount += 1;
+			victoryOrDefeat.text = "正解";
+			exactlyCount +=1;
+			questionCount += 1;
 			Debug.Log("正解");
 		}
 		else
 		{
-			VictoryOrDefeat.text = "不正解";
-			QuestionCount += 1;
+			victoryOrDefeat.text = "不正解";
+			questionCount += 1;
 			Debug.Log("不正解");
 		}
 

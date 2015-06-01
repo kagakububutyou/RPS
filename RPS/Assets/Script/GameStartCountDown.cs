@@ -3,19 +3,31 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 /// <summary>
-/// カウントダウン用
+/// ゲームスタート前のカウントダウン
 /// </summary>
 public class GameStartCountDown : MonoBehaviour {
-
+    /// <summary>
+    /// カウントダウンの表示
+    /// </summary>
     [SerializeField]
-    private Text timeCount = null;                              //  カウントダウンの表示
+    private Text timeCount = null;
+    /// <summary>
+    /// カウントダウンの初期値
+    /// </summary>
     [SerializeField]
-    private float startTime = 3.0f;                             //  カウントダウンの初期値
-    private float timer = 0.0f;                                 //  カウントダウン用
-    //private EnemyHand enemyHand = null;                         //  敵の手
-    private ConditioSelection conditioSelection = null;         //  条件選択
-    private GamePlayCount gamePlayCount = null;                 //  ゲームプレイ中のカウントダウン
-    //private PlayerHand playerHand = null;                       //  プレーヤーの手
+    private float startTime = 3.0f;
+    /// <summary>
+    /// カウントダウン
+    /// </summary>
+    private float timer = 0.0f;
+    /// <summary>
+    /// 条件
+    /// </summary>
+    private ConditioSelection conditioSelection = null;
+    /// <summary>
+    /// ゲームプレイ中のカウントダウン
+    /// </summary>
+    private GamePlayCount gamePlayCount = null;
 
 
 	/// <summary>
@@ -23,10 +35,8 @@ public class GameStartCountDown : MonoBehaviour {
 	/// </summary>
 	private void Start () 
     {
-        conditioSelection = GetComponent<ConditioSelection>();  //  条件選択のコンポーネントの取得
-        //enemyHand = GetComponent<EnemyHand>();                  //  敵の手のコンポーネントの取得
-        gamePlayCount = GetComponent<GamePlayCount>();          //  ゲームプレイ中のカウントダウンのコンポーネントの取得
-        //playerHand = GetComponent<PlayerHand>();                //  プレーヤーの手のコンポーネントの取得
+        conditioSelection = GetComponent<ConditioSelection>();
+        gamePlayCount = GetComponent<GamePlayCount>();
         timer = startTime;                                      //  タイムセット
 	}
 
@@ -43,7 +53,7 @@ public class GameStartCountDown : MonoBehaviour {
     /// </summary>
     private void CountDown()
     {
-        //if (timeCount.enabled == false) return;
+        if (timeCount.enabled == false) return;         //  カウントダウンをするかどうか
 
         timer -= Time.deltaTime;                        //  時間を減らす
         var temp = (int)timer;                          //  タイム表示のために小数点切り捨て
@@ -53,14 +63,12 @@ public class GameStartCountDown : MonoBehaviour {
         }
         else if (timer < 1.0f)                          //  1s未満で
         {
-			timeCount.text = "開始";                     //  Goを表示
+			timeCount.text = "開始";                    //  Goを表示
         }
         if (timer <= 0.0f)                              //  0s以下で
         {
-            conditioSelection.StartGame();     //  カウントダウンがゼロになったら呼ぶ
-            //enemyHand.ChangeDrawMode(true);             //  カウントダウンがゼロになったら呼ぶ
-            //playerHand.ChangeDrawMode(true);            //  カウントダウンがゼロになったら呼ぶ
-            gamePlayCount.GameStart();                  //  カウントダウン開始
+            conditioSelection.StartGame();              //  カウントダウンがゼロになったら呼ぶ
+            gamePlayCount.StartGame();                  //  カウントダウン開始
             timeCount.enabled = false;                  //  表示を消す
         }
     }

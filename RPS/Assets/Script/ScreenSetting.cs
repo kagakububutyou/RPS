@@ -5,13 +5,21 @@ using System.Collections;
 /// </summary>
 public class ScreenSetting : MonoBehaviour {
 
+    /// <summary>
+    /// 横幅
+    /// </summary>
     [SerializeField]
-    private int width  = 640;   //  横幅
+    private int width  = 640;
+    /// <summary>
+    /// 縦幅
+    /// </summary>
     [SerializeField]
-    private int height = 960;   //  縦幅
+    private int height = 960;
+    /// <summary>
+    /// フルスクリーンにするかどうか
+    /// </summary>
     [SerializeField]
-    bool fullscreen = false;    //  フルスクリーンにするかどうか
-
+    bool fullscreen = false;
 
     /// <summary>
     /// 解像度を固定

@@ -1,33 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// キャラの手のインターフェイス
+/// </summary>
 public class ICharacterHand : MonoBehaviour {
 
-    //  じゃんけんの手
+    /// <summary>
+    /// 手の種類
+    /// </summary>
     public enum HandType
     {
-        Rock,           //  グー
-        Paper,          //  パー
-        Sciccors,       //  チョキ
-
+        /// <summary>
+        /// グー
+        /// </summary>
+        Rock,
+        /// <summary>
+        /// パー
+        /// </summary>
+        Paper,
+        /// <summary>
+        /// チョキ
+        /// </summary>
+        Sciccors,
+        /// <summary>
+        /// 最大
+        /// </summary>
         MaxValue,
     };
-
+    /// <summary>
+    /// 手の種類
+    /// </summary>
     public HandType handType = HandType.MaxValue;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     /// <summary>
     /// 手をもらってくる
     /// </summary>
+    /// <param name="type">なんの手か</param>
     public void GetHand(HandType type)
     {
 		handType = type;

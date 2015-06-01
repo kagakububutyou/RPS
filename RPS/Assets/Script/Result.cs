@@ -5,11 +5,18 @@ using UnityEngine.UI;
 /// 結果発表
 /// </summary>
 public class Result : MonoBehaviour {
-
+    /// <summary>
+    /// 結果表示
+    /// </summary>
 	[SerializeField]
 	private Text result = null;
-
+    /// <summary>
+    /// 正解数
+    /// </summary>
 	private int Exactly = 0;
+    /// <summary>
+    /// 問題数
+    /// </summary>
 	private int Question = 0;
 
     /// <summary>
@@ -17,8 +24,8 @@ public class Result : MonoBehaviour {
     /// </summary>
 	private void Start () 
 	{
-		Exactly = Umpire.ExactlyCount;
-		Question = Umpire.QuestionCount;
+		Exactly = Umpire.exactlyCount;
+		Question = Umpire.questionCount;
 
         DarwResult();
 	}

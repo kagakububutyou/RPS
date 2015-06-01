@@ -6,8 +6,11 @@ using UnityEngine.UI;
 /// </summary>
 public class GameEnd : MonoBehaviour {
 
+    /// <summary>
+    /// ボタンの取得
+    /// </summary>
     [SerializeField]
-    private Button button = null;	    //  ボタンの取得
+    private Button button = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -20,7 +23,7 @@ public class GameEnd : MonoBehaviour {
     /// ボタンが押された時
     /// </summary>
     private void PushButton()
-    {
-        Application.Quit();
+    {  
+        Application.Quit();     //  ゲーム終了(アプリ起動時
     }
 }

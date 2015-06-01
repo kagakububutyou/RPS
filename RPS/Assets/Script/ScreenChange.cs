@@ -6,8 +6,11 @@ using UnityEngine.UI;
 /// </summary>
 public class ScreenChange : MonoBehaviour {
 
+    /// <summary>
+    /// ボタン
+    /// </summary>
     [SerializeField]
-    private Button button = null;	    //  ボタンの取得
+    private Button button = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -23,12 +26,13 @@ public class ScreenChange : MonoBehaviour {
     {
 		Reset();
         Application.LoadLevel("main");         // シーン移動  
-		//Application.LoadLevel(screen.name);         // シーン移動  
     }
-
+    /// <summary>
+    /// リセット
+    /// </summary>
 	private void Reset()
 	{
-		Umpire.ExactlyCount = 0;
-		Umpire.QuestionCount = 0;
+		Umpire.exactlyCount = 0;
+		Umpire.questionCount = 0;
 	}
 }

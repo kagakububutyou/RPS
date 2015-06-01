@@ -7,23 +7,41 @@ using System.Collections.Generic;
 /// </summary>
 public class EnemyHand : IHand{
 
+    /// <summary>
+    /// 敵の手のデータ
+    /// </summary>
     [System.Serializable]
     public struct DATA
     {
+        /// <summary>
+        /// 敵の手のデータ
+        /// </summary>
+        /// <param name="type">手の種類</param>
+        /// <param name="sprite">画像</param>
         public DATA(ICharacterHand.HandType type, Sprite sprite)
         {
             this.type = type;
             this.sprite = sprite;
  
         }
+        /// <summary>
+        /// 手の種類
+        /// </summary>
         public ICharacterHand.HandType type;
+        /// <summary>
+        /// スプライト
+        /// </summary>
         public Sprite sprite;
     }
 
-
+    /// <summary>
+    /// 敵のデータ
+    /// </summary>
     [SerializeField]
     List<DATA> data = new List<DATA>();
-
+    /// <summary>
+    /// 画像
+    /// </summary>
     Image image = null;
 
     /// <summary>
@@ -34,7 +52,9 @@ public class EnemyHand : IHand{
         image = GetComponent<Image>();
         PushHand();
     }
-
+    /// <summary>
+    /// リセット
+    /// </summary>
 	public void Reset()
 	{
 		PushHand ();
@@ -48,14 +68,10 @@ public class EnemyHand : IHand{
 		RandomHand();
 		manager.GetHand(handType);
 	}
-    /// <summary>
-    /// カウントダウンがゼロになったら呼ぶ
-    /// </summary>
-    public void ChangeDrawMode(bool Mode)
-    {
 
-    }
-    
+    /// <summary>
+    /// 敵の手を決める
+    /// </summary>
     private void RandomHand()
     {
         handType = (ICharacterHand.HandType)Random.Range(0, (int)ICharacterHand.HandType.MaxValue);
@@ -68,6 +84,4 @@ public class EnemyHand : IHand{
             }
 	    }
     }
-
-    
 }
