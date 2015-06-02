@@ -24,27 +24,14 @@ public class GamePlayCount : MonoBehaviour {
     /// カウントダウンを開始するか
     /// </summary>
     private bool CountDownStart = false;
-    /// <summary>
-    /// 敵の手
-    /// </summary>
-    private EnemyHand enemyHand = null;
-    /// <summary>
-    /// 条件選択
-    /// </summary>
-    private ConditioSelection conditioSelection = null;
-    /// <summary>
-    /// プレーヤーの手
-    /// </summary>
-    private PlayerHand playerHand = null;
+	[SerializeField]
+	private Umpire umpire = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
 	private void Start () 
     {
-        conditioSelection = GetComponent<ConditioSelection>();
-        enemyHand = GetComponent<EnemyHand>();
-        playerHand = GetComponent<PlayerHand>();
         timer = startTime;                      //  タイムセット
         timeCount.enabled = false;              //  非表示に
 	}
@@ -81,7 +68,7 @@ public class GamePlayCount : MonoBehaviour {
         else if (timer < 1.0f)                          //  1s未満で
         {
 			timeCount.text = "終了";                    //  Goを表示
-            conditioSelection.EndGame();                //  非表示に
+			umpire.EndGame();
         }
         if (timer <= 0.0f)                              //  0s以下で
         {

@@ -9,14 +9,17 @@ public class PlayerHand : IHand
     /// <summary>
     /// ボタン
     /// </summary>
+	[SerializeField]
     private Button button = null;
     /// <summary>
     /// プレイヤーのマネージャー
     /// </summary>
+	[SerializeField]
 	private PlayerManager playerManager = null;
     /// <summary>
     /// 審判
     /// </summary>
+	[SerializeField]
 	private Umpire umpire = null;
 
     /// <summary>
@@ -24,11 +27,15 @@ public class PlayerHand : IHand
     /// </summary>
     private void Start()
     {
-		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
-		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
-        button = GetComponent<Button>();
         button.onClick.AddListener(PushHand);                   //  ボタンが押された時(イベントコールバック)
+		button.enabled = false;
     }
+
+	public void StartGame()
+	{
+		button.enabled = true;
+	}
+
     /// <summary>
     /// ボタンが押された時
     /// </summary>

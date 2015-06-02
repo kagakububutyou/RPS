@@ -24,6 +24,7 @@ public class ConditioSelection : MonoBehaviour
     /// <summary>
     /// 審判
     /// </summary>
+	[SerializeField]
     private Umpire umpire = null;
 
     
@@ -43,7 +44,6 @@ public class ConditioSelection : MonoBehaviour
     private void Start()
     {
         UnityEngine.Random.seed = dtNow.Millisecond;    // ミリ秒を取得しシード値へ
-        umpire = GetComponent<Umpire>();
         condition.enabled = false;                      //  条件の非表示
     }
     /// <summary>

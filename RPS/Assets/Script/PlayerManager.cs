@@ -7,20 +7,25 @@ public class PlayerManager : ICharacterHand {
     /// <summary>
     /// 審判
     /// </summary>
+	[SerializeField]
 	private Umpire umpire = null;
     /// <summary>
     /// プレイヤーのアクション
     /// </summary>
+	[SerializeField]
 	private PlayerAction playerAction = null;
 
-    /// <summary>
-    /// 初期化のためにこれを使用してください
-    /// </summary>
-	private void Start () 
-    {
-		umpire = GameObject.Find ("Manager").GetComponent<Umpire> ();
-		playerAction = GetComponent<PlayerAction> ();
+	[SerializeField]
+	private PlayerHand[] playerHand = null;
+	
+	public void StartGame()
+	{
+		for (var i = 0; i < playerHand.Length; i++) 
+		{
+			playerHand[i].StartGame();	
+		}
 	}
+
     /// <summary>
     /// 次のゲームへ
     /// </summary>

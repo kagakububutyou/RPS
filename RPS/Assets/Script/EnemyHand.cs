@@ -38,11 +38,11 @@ public class EnemyHand : IHand{
     /// 敵のデータ
     /// </summary>
     [SerializeField]
-    List<DATA> data = new List<DATA>();
+    private List<DATA> data = new List<DATA>();
     /// <summary>
     /// 画像
     /// </summary>
-    Image image = null;
+    private Image image = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -50,8 +50,14 @@ public class EnemyHand : IHand{
     private void Start()
     {
         image = GetComponent<Image>();
-        PushHand();
+		image.enabled = false;
     }
+	public void StartGame()
+	{
+		PushHand ();
+		image.enabled = true;
+	}
+
     /// <summary>
     /// リセット
     /// </summary>

@@ -34,25 +34,27 @@ public class Umpire : MonoBehaviour
     /// <summary>
     /// プレイヤーマネージャー
     /// </summary>
+	[SerializeField]
 	private PlayerManager playerManager = null;
     /// <summary>
     /// 敵のマネージャー
     /// </summary>
+	[SerializeField]
 	private EnemyManager enemyManager = null;
     /// <summary>
     /// 勝敗条件
     /// </summary>
+	[SerializeField]
     private ConditioSelection conditioSelection = null;
+	[SerializeField]
+	private GamePlayCount gamePlayCount = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     private void Start()
     {
-		playerManager = GameObject.Find ("PlayerManager").GetComponent<PlayerManager> ();
-		enemyManager = GameObject.Find ("EnemyManager").GetComponent<EnemyManager> ();
-        conditioSelection = GetComponent<ConditioSelection>();      //  勝敗条件
-        victoryOrDefeat.text = "";      /// 中身を空にする
+		victoryOrDefeat.text = "";      /// 中身を空にする
     }
     /// <summary>
     /// プレイヤーが何を出したかをもらう
@@ -91,6 +93,14 @@ public class Umpire : MonoBehaviour
 		Judge ();
 		NextGame ();
     }
+	public void StartGame()
+	{
+		playerManager.StartGame ();
+		enemyManager.StartGame ();
+		conditioSelection.StartGame();              //  カウントダウンがゼロになったら呼ぶ
+		gamePlayCount.StartGame();                  //  カウントダウン開始
+	}
+
     /// <summary>
     /// 次のゲームへ
     /// </summary>
@@ -100,6 +110,12 @@ public class Umpire : MonoBehaviour
 		enemyManager.NextGame ();
         conditioSelection.NextGame();
 	}
+
+	public void EndGame()
+	{
+		conditioSelection.EndGame();                //  非表示に
+	}
+
 	/// <summary>
 	/// じゃんけんの勝敗判定
 	/// </summary>

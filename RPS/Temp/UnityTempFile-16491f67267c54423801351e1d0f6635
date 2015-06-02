@@ -56,12 +56,10 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 'Assets/Script/ConditioSelection.cs'
-'Assets/Script/CountDown.cs'
 'Assets/Script/EnemyHand.cs'
 'Assets/Script/EnemyManager.cs'
 'Assets/Script/GameEnd.cs'
 'Assets/Script/GamePlayCount.cs'
-'Assets/Script/GameStart.cs'
 'Assets/Script/GameStartCountDown.cs'
 'Assets/Script/ICharacterHand.cs'
 'Assets/Script/IHand.cs'

@@ -20,23 +20,15 @@ public class GameStartCountDown : MonoBehaviour {
     /// カウントダウン
     /// </summary>
     private float timer = 0.0f;
-    /// <summary>
-    /// 条件
-    /// </summary>
-    private ConditioSelection conditioSelection = null;
-    /// <summary>
-    /// ゲームプレイ中のカウントダウン
-    /// </summary>
-    private GamePlayCount gamePlayCount = null;
 
+	[SerializeField]
+	private Umpire umpire = null;
 
 	/// <summary>
 	/// timerにタイムを代入
 	/// </summary>
 	private void Start () 
     {
-        conditioSelection = GetComponent<ConditioSelection>();
-        gamePlayCount = GetComponent<GamePlayCount>();
         timer = startTime;                                      //  タイムセット
 	}
 
@@ -67,8 +59,7 @@ public class GameStartCountDown : MonoBehaviour {
         }
         if (timer <= 0.0f)                              //  0s以下で
         {
-            conditioSelection.StartGame();              //  カウントダウンがゼロになったら呼ぶ
-            gamePlayCount.StartGame();                  //  カウントダウン開始
+			umpire.StartGame();
             timeCount.enabled = false;                  //  表示を消す
         }
     }
