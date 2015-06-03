@@ -34,8 +34,8 @@ public class ConditioSelection : MonoBehaviour
     /// [勝敗判定,不明,勝敗の渡す値]
     private string[, ,] Conditions =
     {
-        {{"勝ってください","2","-1"},},
-        {{"負けてください","1","-1"},},
+        {{"勝ってください","2",""},},
+        {{"負けてください","1",""},},
     };
 
     /// <summary>

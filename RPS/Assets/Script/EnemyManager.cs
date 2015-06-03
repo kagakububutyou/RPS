@@ -21,7 +21,7 @@ public class EnemyManager : ICharacterHand{
     /// </summary>
 	public void GetPushHandTaimingu()
 	{
-		umpire.GetEnemyHand ((int)handType);
+		umpire.GetEnemyHand (handType);
 	}
 	public void StartGame()
 	{
@@ -33,6 +33,11 @@ public class EnemyManager : ICharacterHand{
 	public void NextGame()
 	{
 		enemyHand.Reset ();
+	}
+
+	public void EndGame()
+	{
+		enemyHand.EndGame ();
 	}
     
 }

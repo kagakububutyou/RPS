@@ -66,6 +66,10 @@ public class EnemyHand : IHand{
 		PushHand ();
 	}
 
+	public void EndGame()
+	{
+		image.enabled = false;
+	}
 	/// <summary>
 	/// 何を出すか決めるところ
 	/// </summary>

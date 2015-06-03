@@ -35,12 +35,16 @@ public class PlayerHand : IHand
 	{
 		button.enabled = true;
 	}
-
+	public void EndGame()
+	{
+		button.enabled = false;
+	}
     /// <summary>
     /// ボタンが押された時
     /// </summary>
     protected override void PushHand()
     {
+		manager.GetHand(handType);
         playerManager.GetPushHandTaimingu();
         umpire.Judgment();
     }

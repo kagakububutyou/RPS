@@ -60,19 +60,19 @@ public class Umpire : MonoBehaviour
     /// プレイヤーが何を出したかをもらう
     /// </summary>
     /// <param name="Hands">何出したか？</param>
-    public void GetPlayerHand(int Hands)
+	public void GetPlayerHand(ICharacterHand.HandType Hands)
     {
-        playerHands = Hands;                //  情報を受け取る
-        Debug.Log("自分" + playerHands);    //　デバック表示
+        playerHands = (int)Hands;                //  情報を受け取る
+		Debug.Log("自分" + playerHands);    //　デバック表示
     }
     /// <summary>
     /// 敵が何を出したかをもらう
     /// </summary>
     /// <param name="Hands">何を出したか？</param> 
-    public void GetEnemyHand(int Hands)
+	public void GetEnemyHand(ICharacterHand.HandType Hands)
     {
-        enemyHands = Hands;                 //  何を出してるかを受け取る
-        Debug.Log("相手" + enemyHands);     //  デバック表示
+        enemyHands = (int)Hands;                 //  何を出してるかを受け取る
+		Debug.Log("相手" + enemyHands);     //  デバック表示
     }
     /// <summary>
     /// 勝敗条件をもらう
@@ -113,6 +113,8 @@ public class Umpire : MonoBehaviour
 
 	public void EndGame()
 	{
+		playerManager.EndGame ();
+		enemyManager.EndGame ();
 		conditioSelection.EndGame();                //  非表示に
 	}
 
@@ -145,7 +147,7 @@ public class Umpire : MonoBehaviour
 	///     自分に2を加算後3で剰余した値が敵が同じ時
 	///     敗北の場合
 	///     自分に1を加算後3で剰余した値が敵と同じ時
-	///     自分の値に条件を加算し0になれば正解
+	///     自分の値に条件を加算し0になればhikiwake
 	private void Judge()
 	{
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
@@ -161,6 +163,5 @@ public class Umpire : MonoBehaviour
 			questionCount += 1;
 			Debug.Log("不正解");
 		}
-
 	}
 }

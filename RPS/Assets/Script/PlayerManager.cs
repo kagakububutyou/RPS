@@ -33,11 +33,19 @@ public class PlayerManager : ICharacterHand {
 	{
 		playerAction.PositionChange ();
 	}
+
+	public void EndGame()
+	{
+		for (var i = 0; i < playerHand.Length; i++) 
+		{
+			playerHand[i].EndGame();
+		}
+	}
     /// <summary>
     /// ボタンの押したタイミング
     /// </summary>
 	public void GetPushHandTaimingu()
 	{
-		umpire.GetPlayerHand ((int)handType);
+		umpire.GetPlayerHand (handType);
 	}
 }
