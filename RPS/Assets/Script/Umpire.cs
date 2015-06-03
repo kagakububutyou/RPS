@@ -46,6 +46,9 @@ public class Umpire : MonoBehaviour
     /// </summary>
 	[SerializeField]
     private ConditioSelection conditioSelection = null;
+    /// <summary>
+    /// プレイ中のカウントダウンの
+    /// </summary>
 	[SerializeField]
 	private GamePlayCount gamePlayCount = null;
 
@@ -93,12 +96,15 @@ public class Umpire : MonoBehaviour
 		Judge ();
 		NextGame ();
     }
+    /// <summary>
+    /// ゲーム開始
+    /// </summary>
 	public void StartGame()
 	{
 		playerManager.StartGame ();
 		enemyManager.StartGame ();
-		conditioSelection.StartGame();              //  カウントダウンがゼロになったら呼ぶ
-		gamePlayCount.StartGame();                  //  カウントダウン開始
+		conditioSelection.StartGame();
+		gamePlayCount.StartGame();
 	}
 
     /// <summary>
@@ -110,12 +116,14 @@ public class Umpire : MonoBehaviour
 		enemyManager.NextGame ();
         conditioSelection.NextGame();
 	}
-
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
 	public void EndGame()
 	{
 		playerManager.EndGame ();
 		enemyManager.EndGame ();
-		conditioSelection.EndGame();                //  非表示に
+		conditioSelection.EndGame();
 	}
 
 	/// <summary>
@@ -147,12 +155,13 @@ public class Umpire : MonoBehaviour
 	///     自分に2を加算後3で剰余した値が敵が同じ時
 	///     敗北の場合
 	///     自分に1を加算後3で剰余した値が敵と同じ時
-	///     自分の値に条件を加算し0になればhikiwake
+	///     自分の値に条件を加算し0になれば引き分け
+    ///     
 	private void Judge()
 	{
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
-			victoryOrDefeat.text = "正解";
+			victoryOrDefeat.text = "正解"; 
 			exactlyCount +=1;
 			questionCount += 1;
 			Debug.Log("正解");

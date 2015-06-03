@@ -52,6 +52,9 @@ public class EnemyHand : IHand{
         image = GetComponent<Image>();
 		image.enabled = false;
     }
+    /// <summary>
+    /// ゲーム開始時
+    /// </summary>
 	public void StartGame()
 	{
 		PushHand ();
@@ -65,7 +68,9 @@ public class EnemyHand : IHand{
 	{
 		PushHand ();
 	}
-
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
 	public void EndGame()
 	{
 		image.enabled = false;

@@ -20,7 +20,9 @@ public class GameStartCountDown : MonoBehaviour {
     /// カウントダウン
     /// </summary>
     private float timer = 0.0f;
-
+    /// <summary>
+    /// 審判
+    /// </summary>
 	[SerializeField]
 	private Umpire umpire = null;
 

@@ -23,6 +23,9 @@ public class EnemyManager : ICharacterHand{
 	{
 		umpire.GetEnemyHand (handType);
 	}
+    /// <summary>
+    /// ゲーム開始時
+    /// </summary>
 	public void StartGame()
 	{
 		enemyHand.StartGame ();
@@ -34,7 +37,9 @@ public class EnemyManager : ICharacterHand{
 	{
 		enemyHand.Reset ();
 	}
-
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
 	public void EndGame()
 	{
 		enemyHand.EndGame ();

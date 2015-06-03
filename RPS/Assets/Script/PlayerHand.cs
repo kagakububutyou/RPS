@@ -30,11 +30,16 @@ public class PlayerHand : IHand
         button.onClick.AddListener(PushHand);                   //  ボタンが押された時(イベントコールバック)
 		button.enabled = false;
     }
-
+    /// <summary>
+    /// ゲーム開始
+    /// </summary>
 	public void StartGame()
 	{
 		button.enabled = true;
 	}
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
 	public void EndGame()
 	{
 		button.enabled = false;

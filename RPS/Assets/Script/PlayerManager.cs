@@ -14,10 +14,14 @@ public class PlayerManager : ICharacterHand {
     /// </summary>
 	[SerializeField]
 	private PlayerAction playerAction = null;
-
+    /// <summary>
+    /// プレーヤーの手
+    /// </summary>
 	[SerializeField]
 	private PlayerHand[] playerHand = null;
-	
+	/// <summary>
+	/// ゲーム開始
+	/// </summary>
 	public void StartGame()
 	{
 		for (var i = 0; i < playerHand.Length; i++) 
@@ -33,7 +37,9 @@ public class PlayerManager : ICharacterHand {
 	{
 		playerAction.PositionChange ();
 	}
-
+    /// <summary>
+    /// ゲーム終了
+    /// </summary>
 	public void EndGame()
 	{
 		for (var i = 0; i < playerHand.Length; i++) 

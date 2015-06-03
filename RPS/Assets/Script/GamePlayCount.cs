@@ -24,6 +24,9 @@ public class GamePlayCount : MonoBehaviour {
     /// カウントダウンを開始するか
     /// </summary>
     private bool CountDownStart = false;
+    /// <summary>
+    /// 審判
+    /// </summary>
 	[SerializeField]
 	private Umpire umpire = null;
 
