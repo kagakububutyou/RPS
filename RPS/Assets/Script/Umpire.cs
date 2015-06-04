@@ -27,11 +27,6 @@ public class Umpire : MonoBehaviour
     /// </summary>
 	public static int questionCount = 0;
     /// <summary>
-    /// 正解不正解の表示
-    /// </summary>
-    [SerializeField]
-    private Text victoryOrDefeat = null;
-    /// <summary>
     /// プレイヤーマネージャー
     /// </summary>
 	[SerializeField]
@@ -51,13 +46,15 @@ public class Umpire : MonoBehaviour
     /// </summary>
 	[SerializeField]
 	private GamePlayCount gamePlayCount = null;
+	[SerializeField]
+	private VictoryOrDefeat victoryOrDefeat = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
     private void Start()
     {
-		victoryOrDefeat.text = "";      /// 中身を空にする
+		//victoryOrDefeat.text = "";      /// 中身を空にする
     }
     /// <summary>
     /// プレイヤーが何を出したかをもらう
@@ -105,6 +102,7 @@ public class Umpire : MonoBehaviour
 		enemyManager.StartGame ();
 		conditioSelection.StartGame();
 		gamePlayCount.StartGame();
+		victoryOrDefeat.StartGame ();
 	}
 
     /// <summary>
@@ -124,6 +122,7 @@ public class Umpire : MonoBehaviour
 		playerManager.EndGame ();
 		enemyManager.EndGame ();
 		conditioSelection.EndGame();
+		victoryOrDefeat.EndGame ();
 	}
 
 	/// <summary>
@@ -161,14 +160,14 @@ public class Umpire : MonoBehaviour
 	{
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
-			victoryOrDefeat.text = "正解"; 
+			victoryOrDefeat.Answer("正解");
 			exactlyCount +=1;
 			questionCount += 1;
 			Debug.Log("正解");
 		}
 		else
 		{
-			victoryOrDefeat.text = "不正解";
+			victoryOrDefeat.Answer("不正解");
 			questionCount += 1;
 			Debug.Log("不正解");
 		}
