@@ -160,14 +160,14 @@ public class Umpire : MonoBehaviour
 	{
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
-			victoryOrDefeat.Answer("正解");
+			victoryOrDefeat.GetAnswer("正解");
 			exactlyCount +=1;
 			questionCount += 1;
 			Debug.Log("正解");
 		}
 		else
 		{
-			victoryOrDefeat.Answer("不正解");
+			victoryOrDefeat.GetAnswer("不正解");
 			questionCount += 1;
 			Debug.Log("不正解");
 		}
