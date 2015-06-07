@@ -39,6 +39,5 @@ public class ICharacterHand : MonoBehaviour {
     public void GetHand(HandType type)
     {
 		handType = type;
-        Debug.Log(handType.ToString());
     }
 }

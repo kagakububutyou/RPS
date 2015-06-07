@@ -13,11 +13,6 @@ public class VictoryOrDefeat : MonoBehaviour {
 	private Text answer = null;
 
     /// <summary>
-    /// フェード中かどうか
-    /// </summary>
-    private bool isFading = false;
-
-    /// <summary>
     /// フェード中の透明度
     /// </summary>
     private float fadeAlpha = 1.0f;
@@ -78,6 +73,5 @@ public class VictoryOrDefeat : MonoBehaviour {
     private void DrawAnswer()
     {
         answer.color = new Vector4(0,0,0,fadeAlpha);
-        Debug.Log(fadeAlpha.ToString());
     }
 }

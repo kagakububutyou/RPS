@@ -46,16 +46,17 @@ public class Umpire : MonoBehaviour
     /// </summary>
 	[SerializeField]
 	private GamePlayCount gamePlayCount = null;
+    /// <summary>
+    /// 答えの表示
+    /// </summary>
 	[SerializeField]
 	private VictoryOrDefeat victoryOrDefeat = null;
-
     /// <summary>
-    /// 初期化のためにこれを使用してください
+    /// 答えの効果音
     /// </summary>
-    private void Start()
-    {
-		//victoryOrDefeat.text = "";      /// 中身を空にする
-    }
+    [SerializeField]
+    private AnswerSE answerSE = null;
+
     /// <summary>
     /// プレイヤーが何を出したかをもらう
     /// </summary>
@@ -161,6 +162,7 @@ public class Umpire : MonoBehaviour
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
 			victoryOrDefeat.GetAnswer("正解");
+            answerSE.Exactly();
 			exactlyCount +=1;
 			questionCount += 1;
 			Debug.Log("正解");
