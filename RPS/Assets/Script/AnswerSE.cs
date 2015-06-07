@@ -9,10 +9,13 @@ public class AnswerSE : MonoBehaviour {
     /// </summary>
     [SerializeField]
     private AudioClip exactly  = null;
+	[SerializeField]
+	private AudioClip mistake = null;
     /// <summary>
     /// 再生
     /// </summary>
     private AudioSource exactlySE = null;
+	private AudioSource mistakeSE = null;
 
     /// <summary>
     /// 初期化のためにこれを使用してください
@@ -21,6 +24,9 @@ public class AnswerSE : MonoBehaviour {
     {
         exactlySE = gameObject.GetComponent<AudioSource>();
         exactlySE.clip = exactly;
+
+		mistakeSE = gameObject.GetComponent<AudioSource> ();
+		mistakeSE.clip = mistake;
 	}
 
     /// <summary>
@@ -30,4 +36,8 @@ public class AnswerSE : MonoBehaviour {
     {
         exactlySE.PlayOneShot(exactly);
     }
+	public void Mistake()
+	{
+		mistakeSE.PlayOneShot (mistake);
+	}
 }

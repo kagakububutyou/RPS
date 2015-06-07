@@ -170,6 +170,7 @@ public class Umpire : MonoBehaviour
 		else
 		{
 			victoryOrDefeat.GetAnswer("不正解");
+			answerSE.Mistake();
 			questionCount += 1;
 			Debug.Log("不正解");
 		}
