@@ -17,10 +17,22 @@ public class CreateCircle : MonoBehaviour {
 	// Use this for initialization
 	private void Start () 
     {
-        // タッチしたときのスクリーン座標を取得
-        Vector2 screenPos = Input.mousePosition;
-        image.transform.position = screenPos;
-        StartCoroutine(CountDown(countMax));
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                image.transform.position = touch.position;
+                StartCoroutine(CountDown(countMax));
+            }
+        }
+        else
+        {
+            // タッチしたときのスクリーン座標を取得
+            Vector2 screenPos = Input.mousePosition;
+            image.transform.position = screenPos;
+            StartCoroutine(CountDown(countMax));
+        }
 	}
 	
 	// Update is called once per frame
