@@ -19,12 +19,19 @@ public class CreateCircle : MonoBehaviour {
     {
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            for (int i = 0; i < Input.touchCount; i++)
+            foreach (Touch touch in Input.touches)
             {
-                Touch touch = Input.GetTouch(i);
-                image.transform.position = touch.position;
-                StartCoroutine(CountDown(countMax));
+                if (touch.phase != TouchPhase.Ended)
+                {
+                    image.transform.position = touch.position;
+                    StartCoroutine(CountDown(countMax));
+                }
+                else
+                {
+                    image.transform.position = Vector2.zero;
+                }
             }
+
         }
         else
         {
