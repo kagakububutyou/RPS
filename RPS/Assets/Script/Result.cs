@@ -47,6 +47,13 @@ public class Result : MonoBehaviour {
     /// 右詰め最大値
     /// </summary>
     private int RightJustifiedMax = 25;
+
+    /// <summary>
+    /// スコアランキング
+    /// </summary>
+    [SerializeField]
+    private ScoreRanking scoreRanking = null;
+
     /// <summary>
     /// 初期化のためにこれを使用してください
     /// </summary>
@@ -56,6 +63,8 @@ public class Result : MonoBehaviour {
         incorrectNum = Umpire.incorrectCount;
 
         Score = (exactlyNum * exactlyScore) - (incorrectNum * incorrectScore);
+        scoreRanking.GetRanking();
+        scoreRanking.SaveRanking(Score);
 	}
 
     private void Update()
@@ -92,6 +101,4 @@ public class Result : MonoBehaviour {
         incorrect.text = RightJustified(incorrectNum);
         result.text = RightJustified(Score);
 	}
-
-
 }

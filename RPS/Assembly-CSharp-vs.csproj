@@ -60,6 +60,7 @@
      <Compile Include="Assets\Script\PlayerHand.cs" />
      <Compile Include="Assets\Script\PlayerManager.cs" />
      <Compile Include="Assets\Script\Result.cs" />
+     <Compile Include="Assets\Script\ScoreRanking.cs" />
      <Compile Include="Assets\Script\ScreenChange.cs" />
      <Compile Include="Assets\Script\ScreenSetting.cs" />
      <Compile Include="Assets\Script\TouchScreen.cs" />
