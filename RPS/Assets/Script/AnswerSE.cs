@@ -9,6 +9,9 @@ public class AnswerSE : MonoBehaviour {
     /// </summary>
     [SerializeField]
     private AudioClip exactly  = null;
+    /// <summary>
+    /// 不正解音
+    /// </summary>
 	[SerializeField]
 	private AudioClip mistake = null;
     /// <summary>
@@ -36,6 +39,9 @@ public class AnswerSE : MonoBehaviour {
     {
         exactlySE.PlayOneShot(exactly);
     }
+    /// <summary>
+    /// 不正解音
+    /// </summary>
 	public void Mistake()
 	{
 		mistakeSE.PlayOneShot (mistake);

@@ -19,13 +19,14 @@ public class Umpire : MonoBehaviour
     /// </summary>
     private int conditios = 0;
     /// <summary>
-    /// 正解数
+    /// 正解した時の得点
     /// </summary>
-	public static int exactlyCount = 0;
+    public static int exactlyCount = 0;
     /// <summary>
-    /// 問題数
+    /// 不正解の時の得点
     /// </summary>
-	public static int questionCount = 0;
+    public static int incorrectCount = 0;
+
     /// <summary>
     /// プレイヤーマネージャー
     /// </summary>
@@ -90,20 +91,20 @@ public class Umpire : MonoBehaviour
     /// </summary>
     public void Judgment()
     {
-		enemyManager.GetPushHandTaimingu ();
-		Judge ();
-		NextGame ();
+        enemyManager.GetPushHandTaimingu();
+        Judge();
+        NextGame();
     }
     /// <summary>
     /// ゲーム開始
     /// </summary>
 	public void StartGame()
 	{
-		playerManager.StartGame ();
-		enemyManager.StartGame ();
-		conditioSelection.StartGame();
-		gamePlayCount.StartGame();
-		victoryOrDefeat.StartGame ();
+		playerManager       .StartGame();
+		enemyManager        .StartGame();
+		conditioSelection   .StartGame();
+		gamePlayCount       .StartGame();
+		victoryOrDefeat     .StartGame();
 	}
 
     /// <summary>
@@ -111,23 +112,26 @@ public class Umpire : MonoBehaviour
     /// </summary>
 	private void NextGame()
 	{
-		playerManager.NextGame ();
-		enemyManager.NextGame ();
-        conditioSelection.NextGame();
+		playerManager       .NextGame();
+		enemyManager        .NextGame();
+        conditioSelection   .NextGame();
 	}
     /// <summary>
     /// ゲーム終了
     /// </summary>
 	public void EndGame()
 	{
-		playerManager.EndGame ();
-		enemyManager.EndGame ();
-		conditioSelection.EndGame();
-		victoryOrDefeat.EndGame ();
+		playerManager       .EndGame();
+		enemyManager        .EndGame();
+		conditioSelection   .EndGame();
+		victoryOrDefeat     .EndGame();
 	}
 
 	/// <summary>
 	/// じゃんけんの勝敗判定
+    /// 正解かどうかを渡し
+    /// 効果音を鳴らす
+    /// 正解数を数える
 	/// </summary>
 	/// 
 	/// ０はグー
@@ -156,22 +160,20 @@ public class Umpire : MonoBehaviour
 	///     敗北の場合
 	///     自分に1を加算後3で剰余した値が敵と同じ時
 	///     自分の値に条件を加算し0になれば引き分け
-    ///     
 	private void Judge()
 	{
 		if ((playerHands + conditios) % 3 - enemyHands == 0) 
 		{
 			victoryOrDefeat.GetAnswer("正解");
             answerSE.Exactly();
-			exactlyCount +=1;
-			questionCount += 1;
+            exactlyCount += 1;
 			Debug.Log("正解");
 		}
 		else
 		{
 			victoryOrDefeat.GetAnswer("不正解");
 			answerSE.Mistake();
-			questionCount += 1;
+            incorrectCount += 1;
 			Debug.Log("不正解");
 		}
 	}

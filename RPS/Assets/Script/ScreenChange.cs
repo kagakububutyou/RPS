@@ -32,7 +32,7 @@ public class ScreenChange : MonoBehaviour {
     /// </summary>
 	private void Reset()
 	{
-		Umpire.exactlyCount = 0;
-		Umpire.questionCount = 0;
+        Umpire.exactlyCount     = 0;
+        Umpire.incorrectCount   = 0;
 	}
 }
